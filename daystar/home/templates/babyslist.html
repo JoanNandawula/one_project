@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  /* .container {
+    padding-top: 20px;
+    margin-top: 20px;
+    max-width: 950px;
+    padding: 20px;
+    margin-left: 90px;
+  } */
+
+  h2 {
+    text-align: center;
+    color: black; 
+  }
+
+  /* table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  th, */
+  td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    white-space: nowrap;
+  }
+
+  th {
+    background-color: #4CAF50; 
+    color: white; 
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2; 
+  }
+
+  
+</style>
+
+<h2>List of registered Babies</h2>
+<a href="/babesform" class="btn btn-outline-secondary" style="margin-left: 100px;">Add Babies</a>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Categorystay</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Age</th>
+        <th scope="col">Location</th>
+        <th scope="col">sponsor</th>
+        <th scope="col">parentsname</th>
+        <th scope="col">Date</th>
+        <th scope="col">Timein</th>
+        <th scope="col">Person_Bringing_The_Baby</th>
+        <th scope="col">Action</th>
+
+      </tr>
+    </thead>
+    <tbody>
+        {% for baby in babyslist %}
+      <tr>
+        <th scope="row">{{ baby.id }}</th>
+        <td>{{ baby.c_stay }}</td>
+        <td>{{ baby.b_name }}</td>
+        <td>{{ baby.gender}}</td>
+        <td>{{ baby.age }}</td>
+        <td>{{ baby.location }}</td>
+        <td>{{ baby.sponsor }}</td>
+        <td>{{ baby.parentsname }}</td>
+        <td>{{ baby.date }}</td>
+        <td>{{ baby.timein }}</td>
+        <td>{{ baby.person_bringing_baby }}</td>
+        <td><a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary">View</a></td>
+        <td><a href="{% url 'babydelete' id=baby.id %}" class="btn btn-outline-secondary">Delete</a></td>
+      </tr> 
+  
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+
+
+{% endblock %}

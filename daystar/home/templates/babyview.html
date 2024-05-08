@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h2>List of registered babies</h2>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Categorystay</th>
+        <th scope="col">Name</th>
+        <th scope="col">Gender</th>
+        <th scope="col">Age</th>
+        <th scope="col">Location</th>
+        <th scope="col">sponsor</th>
+        <th scope="col">parentsname</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+    
+      <tr>
+        <th scope="row">{{ baby_info.id}}</th>
+        <td>{{ baby_info.c_stay }}</td>
+        <td>{{ baby_info.b_name }}</td>
+        <td>{{ baby_info.gender}}</td>
+        <td>{{ baby_info.age }}</td>
+        <td>{{ baby_info.location }}</td>
+        <td>{{ baby_info.sponsor }}</td>
+        <td>{{ baby_info.parentsname }}</td>
+        <td>{{ baby_info.date }}</td>
+        <td><a href="{% url 'babyedit' id=baby_info.id %}" class="btn btn-outline-secondary">Edit Baby</a></td>
+        <a href="/babesform" class="btn btn-outline-secondary">Add Babies</a>
+      </tr>
+      
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

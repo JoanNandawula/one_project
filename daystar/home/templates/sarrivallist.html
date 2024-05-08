@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  h2{
+    text-align: center;
+  }
+</style>
+
+<h2>List of arrived sitters</h2>
+<a href="/sarrival" class="btn btn-outline-secondary" style="margin-left: 100px;">Add Sitter</a>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Timein</th>
+        <th scope="col">Sittersno</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for sitter in sarrivallist %}
+      <tr>
+        <th scope="row">{{ sitter.id}}</th>
+        <td>{{ sitter.s_name }}</td>
+        <td>{{ sitter.timein }}</td>
+        <td>{{ sitter.sittersno }}</td>
+        <td>{{ sitter.date }}</td>
+      </tr>
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

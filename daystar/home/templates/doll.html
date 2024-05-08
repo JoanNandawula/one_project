@@ -1,0 +1,60 @@
+dolls.html {% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+
+<br>
+    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class=" btn btn-outline-secondary" placeholder="Receipts"/></a>
+    <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-outline-secondary" type="button"/></a>
+
+
+<div class="table-container">
+    
+        <h4 >DOLLS IN  STOCK</h4><hr>
+
+    
+</div>
+<table class="table table-bordered">
+    
+    <thead class="thead-dark table-bordered">
+        <tr>
+            <th scope="col" class="project-h1">Category</th>
+            <th scope="col" class="project-h1">Doll name</th>
+            <th scope="col" class="project-h1">Doll Quantity</th>
+            <th scope="col" class="project-h1">Doll Type</th>
+            <th scope="col" class="project-h1">Doll Issued_quantity</th>
+            <th scope="col" class="project-h1">Doll received_quantity</th>
+            <th scope="col" class="project-h1">Doll Unit_price (UGX)</th>
+            <th scope="col" class="project-h1">Doll date</th>
+        </tr>
+    </thead>
+    {% for doll in dolls %}
+    <tbody>
+        <tr style="font-family: sans-serif;">
+            <td>{{doll.c_doll}}</td>
+            <td>{{doll.name_of_the_doll}}</td>
+            <td>{{doll.quantity}}</td>
+            <td>{{doll.dolltype}}</td>
+            <td>{{doll.issued_quantity}}</td>
+            <td>UGX{{doll.received_quantity}}</td>
+            <td>UGX{{doll.unit_price}}</td>
+            <td>UGX{{doll.date}}</td>
+            
+    
+           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
+            
+            <td >
+                <a href="{% url 'dollscorner' dolls_id=doll.id %}" class="btn btn-outline-secondary">Sell Doll</a>
+            </td>
+
+
+        </div>
+    </tr>
+</tbody>
+{% endfor %}
+</table>
+</div>
+</div>
+</div>
+{% endblock %}
