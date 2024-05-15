@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  h2{
+    text-align: center;
+  }
+</style>
+
+<h2>List Paid babies</h2>
+<a href="/bpayment" class="btn btn-outline-secondary" style="margin-left: 100px;">Paid baby</a>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">BabyPayee</th>
+        <th scope="col">Payno</th>
+        <th scope="col">Currency</th>
+        <th scope="col">Amount_Paid</th>
+        <th scope="col">Total balance</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+   
+    <tbody>
+        {% for baby in bpaymentlist %}
+      <tr>
+        <th scope="row">{{ baby.id}}</th>
+        <td>{{ baby.payee }}</td>
+        <td>{{ baby.Payno }}</td>
+        <td>{{ baby.currency }}</td>
+        <td>{{ baby.amount_paid }}</td>
+        <td>  {{baby.get_balance}} </td>
+
+      </tr> 
+
+      {% endfor %}
+      
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

@@ -24,16 +24,6 @@ def reset_password(request):
 def logout(request):
    return render(request,'logout.html') 
 
-
-
-
-
-
-
-
-
-
-         
 def arrival(request):
     if request.method == 'POST':
         form = AddArrival(request.POST)
@@ -84,25 +74,26 @@ def bpayment(request):
    bpayment = AddBpayment
    return render (request, 'bpayment.html', {'bpayment':bpayment})
 
-# def sitterpayment(request):
-#     if request.method == 'POST':
-#      form = AddSitterpayment(request.POST)
-#      if form.is_valid():  
-#         form.save()
-#         return redirect('dash')  
-#     else:
-#         form = AddSitterpayment()
-#     return render (request,'sitterpayment.html',{'form':form})    
-
-def sitterpayment(request):
+def bpayment(request):
         if request.method == 'POST':
-            form = AddSitterpayment(request.POST)
+            form = AddBpayment(request.POST)
             if form.is_valid():
                 form.save()
-                return redirect('sitterslist')  
+                return redirect('bpaymentlist')  
         else:
-            form = AddSitterpayment()
-        return render(request, 'sitterpayment.html', {'form': form})
+            form = AddBpayment()
+        return render(request, 'bpayment.html', {'form': form})
+
+
+def spayment(request):
+        if request.method == 'POST':
+            form = AddSpayment(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('spaymentlist')  
+        else:
+            form = AddSpayment()
+        return render(request, 'spayment.html', {'form': form})
         
 def login(request):
    return render (request, 'login.html')
@@ -146,16 +137,25 @@ def sitterslist(request):
    sitterslist = Sittersform.objects.all()
    return render (request, 'sitterslist.html',{'sitterslist':sitterslist})
 
-# def sittersedit(request,id):
-#     sitter=get_object_or_404(Sittersform,id=id)
-#     if request.method == 'POST':
-#        form=AddSitter(request.POST,instance=sitter)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('sitterslist')
-#     else:
-#         form=AddSitter(instance=sitter)
-#     return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
+def spaymentlist(request):
+   spaymentlist = Spayment.objects.all()
+   return render (request, 'spaymentlist.html',{'spaymentlist':spaymentlist})
+
+def bpaymentlist(request):
+   bpaymentlist = Bpayment.objects.all()
+   return render (request, 'bpaymentlist.html',{'bpaymentlist':bpaymentlist})
+
+
+def sittersedit(request,id):
+    sitter=get_object_or_404(Sittersform,id=id)
+    if request.method == 'POST':
+       form=AddSitter(request.POST,instance=sitter)
+       if form.is_valid():
+           form.save()
+           return redirect('sitterslist')
+    else:
+        form=AddSitter(instance=sitter)
+    return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
     
 # def sittersdelete(request,id):
 #     sitter=get_object_or_404(Sittersform,id=id)
@@ -275,4 +275,18 @@ def doll(request):
     dolls=Doll.objects.all()
     return render(request,'doll.html',{'dolls':dolls})
 
+def shopform(request):
+   if request.method == 'POST':
+      form=AddShop(request.POST)
+      if form.is_valid():
+         form.save()
+         print(form)
+         messages.success(request, 'Baby added successfully')
+         return redirect('shopstock')
+   else:
+      form = AddShop()
+   return render(request,'shopform.html',{'form':form})
 
+def shopstock(request):
+   shopstock = Shopform.objects.all()
+   return render (request, 'shopstock.html',{'shopstock':shopstock})

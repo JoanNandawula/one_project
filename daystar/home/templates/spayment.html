@@ -2,7 +2,6 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,7 +11,7 @@
 
     <style>
     
-        .babesform {
+        .spayment {
          border:solid  black;
          display:grid;
          grid-template-columns: repeat(2, 1fr);
@@ -43,22 +42,22 @@
      
      </style>
      
-
 </head>
 <body style='background-color:rgb(214, 232, 236)'>
     
-<h3 style='margin-top: 50px; margin-left:300px;' >BABY'S REGISTRATION FORM</h3>
-<div class="container" >
-    
-    <form action="" method="POST" class='babesform'>
-        {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-outline-secondary">Submit</button>
-    </form>
-  
-</div>
 
-<br><br>
+<div class="container">
+    <h1 style='margin-top: 50px; margin-left:300px;'>SITTERS PAYMENT</h1>
+    <form action="" method="POST" class="spayment">
+        
+        {% csrf_token %}
+        {{ form |crispy }}
+  
+    <button type="submit" class="btn btn-outline-secondary">Submit</button>
+</div>
+</form>
+</div>
+<br><br><br><br><br><br><br><br>
 {% endblock %}
 
 </body>

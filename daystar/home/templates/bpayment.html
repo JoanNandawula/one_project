@@ -2,16 +2,66 @@
 {% load crispy_forms_tags %}
 {% load static %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
+    
+
+<style>
+    
+    .body {
+        background-color:lightblue;
+    }
+   .bpayment {
+    border:solid  black;
+    display:grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap:10px;
+    margin-top:50px; 
+    border-radius:5px;
+    padding-left:20px;
+    padding-bottom:15px;
+    padding-right:20px;
+    width:500px;
+    margin-left:200px;
+    background-color:lightblue;
+
+    
+}
+    h3 {
+        
+        margin-top: 50px;
+        margin-left:200px;
+        margin-bottom:50px;
+    }
+    button{
+        height:40px;
+        margin-top:10px;
+        width:200px
+    }
+    
+
+</style>
+<body style='background-color:rgb(214, 232, 236)'>
 <div class="container">
-    <form action="" method="POST">
-        <h1>BABY'S PAYMMENT FORM</h1>
-        <br>
+    <h3>BABY'S PAYMMENT FORM</h3>
+    <form action="" method="POST" class="bpayment">
+        
         {% csrf_token %}
-        {{ bpayment | crispy }}
+        {{ form | crispy }}
+        <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;">Submit</button>
     </form>
 
 </div>
+<br><br>
 
 
 {% endblock %}
+
+</body>
+</html>

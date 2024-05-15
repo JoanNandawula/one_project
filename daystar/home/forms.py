@@ -32,9 +32,9 @@ class AddBpayment(ModelForm):
 
         
 
-class AddSitterpayment(ModelForm):
+class AddSpayment(ModelForm):
     class Meta:
-        model = Sitterpayment
+        model = Spayment
         fields = '__all__'
     def _init_(self, *args, **kwargs):
         super()._init_(*args, **kwargs)
@@ -62,6 +62,11 @@ class SalesrecordForm(ModelForm):
         fields = ['quantity_sold', 'amount_received', 'payee']  
 
 
+
+class  AddShop(ModelForm):
+     class Meta:
+        model = Shopform
+        fields = '__all__'
 
 
 

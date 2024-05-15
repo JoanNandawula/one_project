@@ -3,13 +3,16 @@
 
 {% block content %}
 <style>
-  /* .container {
+  body{
+    background-color: lightblue;
+  }
+  .container {
     padding-top: 20px;
     margin-top: 20px;
     max-width: 950px;
     padding: 20px;
-    margin-left: 90px;
-  } */
+    margin-left: 0px;
+  }
 
   h2 {
     text-align: center;
@@ -21,24 +24,28 @@
     border-collapse: collapse;
     margin-left: auto;
     margin-right: auto;
-  }
+  } */
 
-  th, */
+  th,
   td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
     white-space: nowrap;
   }
+  body {
+    overflow-x: hidden;
 
-  th {
+  }
+
+  /* th {
     background-color: #4CAF50; 
     color: white; 
-  }
+  } */
 
-  tr:nth-child(even) {
+  /* tr:nth-child(even) {
     background-color: #f2f2f2; 
-  }
+  } */
 
   
 </style>
@@ -57,9 +64,8 @@
         <th scope="col">Location</th>
         <th scope="col">sponsor</th>
         <th scope="col">parentsname</th>
-        <th scope="col">Date</th>
         <th scope="col">Timein</th>
-        <th scope="col">Person_Bringing_The_Baby</th>
+        <th scope="col">Brought_by</th>
         <th scope="col">Action</th>
 
       </tr>
@@ -75,11 +81,10 @@
         <td>{{ baby.location }}</td>
         <td>{{ baby.sponsor }}</td>
         <td>{{ baby.parentsname }}</td>
-        <td>{{ baby.date }}</td>
         <td>{{ baby.timein }}</td>
-        <td>{{ baby.person_bringing_baby }}</td>
+        <td>{{ baby.brought_by }}</td>
         <td><a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary">View</a></td>
-        <td><a href="{% url 'babydelete' id=baby.id %}" class="btn btn-outline-secondary">Delete</a></td>
+        
       </tr> 
   
       {% endfor %}

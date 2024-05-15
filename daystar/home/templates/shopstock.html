@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<style>
+    body{
+        background-color: lightblue;
+    }
+</style>
+
+
+<br>
+
+<div class="table-container">
+    
+        <h4 >STOCK OF ITEMS</h4><hr>
+
+    
+</div>
+<table class="table table-bordered">
+    
+    <thead class="thead-dark table-bordered">
+        <tr>
+            <th scope="col" class="project-h1">Item Name</th>
+            <th scope="col" class="project-h1">Item Quantity</th>
+            <th scope="col" class="project-h1">Item Received</th>
+            <th scope="col" class="project-h1">Item Total_Amount</th>
+            <th scope="col" class="project-h1">Item Purchase</th>
+            <th scope="col" class="project-h1">Item Out</th>
+            <th scope="col" class="project-h1">Item Stock_At_Hand</th>
+        </tr>
+    
+    </thead>
+    {% for item in shopstock %}
+    <tbody>
+        <tr style="font-family: sans-serif;">
+            <td>{{Item.item_name}}</td>
+            <td>{{Item.quantity}}</td>
+            <td>{{Item.quantity_received}}</td>
+            <td>{{Item.Total_amount}}</td>
+            <td>{{Item.Date_of_purchase}}</td>
+            <td>{{Item.quantity_issued_out}}</td>
+            <td>{{Item.stock_at_hand}}</td>
+            
+    
+           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
+            
+           
+
+
+        </div>
+    </tr>
+</tbody>
+{% endfor %}
+</table>
+</div>
+</div>
+</div>
+{% endblock %}

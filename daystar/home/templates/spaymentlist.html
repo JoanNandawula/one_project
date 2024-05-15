@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<style>
+  h2{
+    text-align: center;
+  }
+  body{
+    background-color: lightblue;
+  }
+</style>
+
+<h2>List Paid sitters</h2>
+<a href="/spayment" class="btn btn-outline-secondary" style="margin-left: 100px;">Pay Sitter</a>
+<div class="container">
+  <table class="table table-striped" style="width: 90%; margin-left: 20px;">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Sitter_name</th>
+            <th scope="col">Amount</th>
+            <th scope="col">Date</th>
+            <th scope="col">Number_of_Babies</th>
+            <th scope="col">Total amount paid</th> 
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for sitter in spaymentlist %}
+        <tr>
+            <th scope="row">{{ sitter.id }}</th>
+            <td>{{ sitter.name }}</td>
+            <td>{{ sitter.amount }}</td>
+            <td>{{ sitter.date }}</td>
+            <td>{{ sitter.numbers_of_babies_attended_to }}</td>
+            <td>{{ sitter.total_amount_paid }}</td>
+
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+
+{% endblock %}

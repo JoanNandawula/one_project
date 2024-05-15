@@ -1,7 +1,11 @@
-dolls.html {% extends 'base.html' %}
+ {% extends 'base.html' %}
 {% load static %}
-
 {% block content %}
+<style>
+    body{
+        background-color: lightblue;
+    }
+</style>
 
 
 <br>
@@ -22,11 +26,11 @@ dolls.html {% extends 'base.html' %}
             <th scope="col" class="project-h1">Category</th>
             <th scope="col" class="project-h1">Doll name</th>
             <th scope="col" class="project-h1">Doll Quantity</th>
-            <th scope="col" class="project-h1">Doll Type</th>
             <th scope="col" class="project-h1">Doll Issued_quantity</th>
             <th scope="col" class="project-h1">Doll received_quantity</th>
             <th scope="col" class="project-h1">Doll Unit_price (UGX)</th>
             <th scope="col" class="project-h1">Doll date</th>
+            <th scope="col" class="project-h1">Doll Sale</th>
         </tr>
     </thead>
     {% for doll in dolls %}
@@ -35,7 +39,6 @@ dolls.html {% extends 'base.html' %}
             <td>{{doll.c_doll}}</td>
             <td>{{doll.name_of_the_doll}}</td>
             <td>{{doll.quantity}}</td>
-            <td>{{doll.dolltype}}</td>
             <td>{{doll.issued_quantity}}</td>
             <td>UGX{{doll.received_quantity}}</td>
             <td>UGX{{doll.unit_price}}</td>

@@ -1,54 +1,70 @@
-{% extends 'base.html' %}
-{% load crispy_forms_tags %}
-{% load static %}
-{% block content %}
-<style>
-    
-    .body {
-        background-color:lightblue;
-    }
-   .babesform {
-    border:solid  black;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:10px;
-    margin-top:50px; 
-    border-radius:5px;
-    padding-left:20px;
-    padding-bottom:15px;
-    padding-right:20px;
-    width:500px;
-    margin-left:200px;
-    background-color:lightblue;
+    {% extends 'base.html' %}
+    {% load crispy_forms_tags %}
+    {% load static %}
+    {% block content %}   <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
 
-    
-}
-    h3 {
+   
+</head>  
+             
+    <style>
         
-        margin-top: 50px;
+        .body {
+            background-color:lightblue;
+        }
+    .babesform {
+        border:solid  black;
+        display:grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap:10px;
+        margin-top:50px; 
+        border-radius:5px;
+        padding-left:20px;
+        padding-bottom:15px;
+        padding-right:20px;
+        width:500px;
         margin-left:200px;
-        margin-bottom:50px;
+        background-color:lightblue;
+
+        
     }
-    .button{
-        height:20px;
-        margin-top:10px;
-        width:200px
-    }
+        h3 {
+            
+            margin-top: 50px;
+            margin-left:200px;
+            margin-bottom:50px;
+        }
+        .button{
+            height:20px;
+            margin-top:10px;
+            width:200px
+        }
+        
+
+    </style>
+<body style='background-color:rgb(214, 232, 236)'>
     
 
-</style>
-
-
-<div class="container">
-     <h3>BABY'S REGISTRATION FORM</h3>
-    <form action="" method="POST" class='babesform'>
-        {% csrf_token %}
-        {{ form | crispy }}
-        <div class='button'>
-            <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;">Submit</button>
-            </div>
+    <div class="container">
+        <h3>BABY'S REGISTRATION FORM</h3>
+        <form action="" method="POST" class='babesform'>
+            {% csrf_token %}
+            {{ form | crispy }}
+            <div class='button'>
+                <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;">Submit</button>
+            </div>   
         </form>
-    </form>
-</div>
-<br><br>
-{% endblock %}
+    </div>
+    <br><br>
+    {% endblock %}
+   
+
+
+
+
+</body>
+</html>

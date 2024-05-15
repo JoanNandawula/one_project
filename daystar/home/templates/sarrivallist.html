@@ -6,6 +6,9 @@
   h2{
     text-align: center;
   }
+  body{
+    background-color: lightblue;
+  }
 </style>
 
 <h2>List of arrived sitters</h2>
@@ -26,7 +29,7 @@
         {% for sitter in sarrivallist %}
       <tr>
         <th scope="row">{{ sitter.id}}</th>
-        <td>{{ sitter.s_name }}</td>
+        <td>{{ sitter.s_names }}</td>
         <td>{{ sitter.timein }}</td>
         <td>{{ sitter.sittersno }}</td>
         <td>{{ sitter.date }}</td>
