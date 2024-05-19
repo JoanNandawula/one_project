@@ -122,6 +122,7 @@ def logout(request):
     getbabeform = AddBabe()
     return render(request,'sitters/logout.html',{'getlogout':getlogout})
 #sitterregistration form
+@login_required
 def sittersform(request):
     if request.method == 'POST':
         form = AddSitter(request.POST)
@@ -145,7 +146,7 @@ def bpaymentlist(request):
    bpaymentlist = Bpayment.objects.all()
    return render (request, 'bpaymentlist.html',{'bpaymentlist':bpaymentlist})
 
-
+@login_required
 def sittersedit(request,id):
     sitter=get_object_or_404(Sittersform,id=id)
     if request.method == 'POST':
@@ -157,21 +158,13 @@ def sittersedit(request,id):
         form=AddSitter(instance=sitter)
     return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
     
-# def sittersdelete(request,id):
-#     sitter=get_object_or_404(Sittersform,id=id)
-#     if request.method == 'POST':
-#        form=AddSitter(request.POST,instance=sitter)
-#        if form.is_valid():
-#            form.save()
-#            return redirect('sitterslist')
-#     else:
-#         form=AddSitter(instance=sitter)
-#     return render(request,'sittersdelete.html',{'form':form,'sitter':sitter})
+
 
 def  sitterview(request,id):
     sitter_info=Sittersform.objects.get(id=id)   
     return render(request,'sitterview.html',{'sitter_info':sitter_info})
 #babyregistration
+@login_required
 def babesform(request):
    if request.method == 'POST':
       form=AddBabe(request.POST)
@@ -188,6 +181,7 @@ def babyslist(request):
    babyslist = Babesform.objects.all()
    return render (request, 'babyslist.html',{'babyslist':babyslist})
 
+@login_required
 def babyedit(request,id):
     baby=get_object_or_404(Babesform,id=id)
     if request.method == 'POST':
@@ -274,7 +268,7 @@ def all_sales(request):
 def doll(request):
     dolls=Doll.objects.all()
     return render(request,'doll.html',{'dolls':dolls})
-
+@login_required
 def shopform(request):
    if request.method == 'POST':
       form=AddShop(request.POST)

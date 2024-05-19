@@ -10,13 +10,16 @@ from home import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('dash/', views.dash, name='dash'),#dashboard
-    path('bdeparture/', views.bdeparture, name='bdeparture'),#babydeparture
     path('login/',auth_views.LoginView.as_view(template_name='login.html'),name='login'),#login
-    path('sarrivallist/',views.sarrivallist, name='sarrivallist'),# babyarrivall
+    path('logout/',auth_views.LogoutView.as_view(template_name='logout.html'),name='logout'),#logout
+
+
+
+    path('bdeparture/', views.bdeparture, name='bdeparture'),#babydeparture
     path('bdeparturelist/',views.bdeparturelist, name='bdeparturelist'),#babydeparturelist
     path('bpayment/',views.bpayment, name='bpayment'),#babypayment
-    path('sarrival/',views.sarrival, name='sarrival'),#sitterarrival
-    path('logout/',auth_views.LogoutView.as_view(template_name='logout.html'),name='logout'),#logout
+    
+   
 
     path('doll/',views.doll,name='doll'),#doll
     path('dollscorner/<int:dolls_id>/', views.dollscorner, name='dollscorner'),#dollcorner
@@ -27,6 +30,7 @@ urlpatterns = [
     path('shopstock/',views.shopstock, name='shopstock'),
     path('receipt/',views.receipt,name='receipt'),#receipt
     path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),#receipt details
+
     #sitterregistration
     path('sittersform/', views.sittersform, name='sittersform'),
     path('sitterslist/',views.sitterslist, name='sitterslist'),
@@ -35,7 +39,9 @@ urlpatterns = [
     path('spaymentlist/',views.spaymentlist, name='spaymentlist'),
     path('bpaymentlist/',views.bpaymentlist, name='bpaymentlist'),
     path('sittersedit/<int:id>/', views.sittersedit, name='sittersedit'),
-    # path('sittersdelete/<int:id>/', views.sittersdelete, name='sittersdelete'),
+    path('sarrival/',views.sarrival, name='sarrival'),
+    path('sarrivallist/',views.sarrivallist, name='sarrivallist'),
+
     #babyregistration
     path('babesform/', views.babesform, name='babesform'),
     path('babyslist/',views.babyslist, name='babyslist'),

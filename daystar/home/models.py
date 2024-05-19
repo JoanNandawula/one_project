@@ -114,10 +114,10 @@ class Doll(models.Model):
 
 class Salesrecord(models.Model):    
     doll = models.ForeignKey(Doll, on_delete=models.CASCADE, null=False, blank=False)
-    payee = models.ForeignKey(Babesform, on_delete=models.CASCADE, null=False, blank=False)
-    quantity_sold = models.IntegerField(default=0)
-    amount_received = models.IntegerField(default=0)
-    sale_date = models.DateField(default=timezone.now)
+    payee = models.ForeignKey(Babesform, on_delete=models.CASCADE, null=True, blank=True)
+    quantity_sold = models.IntegerField(default=0, null=True, blank=True)
+    amount_received = models.IntegerField(default=0, null=True, blank=True)
+    sale_date = models.DateField(default=timezone.now, null=True, blank=True)
     unit_price = models.IntegerField(default=0)
         
     def get_total(self):

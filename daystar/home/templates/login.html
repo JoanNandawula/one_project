@@ -21,10 +21,11 @@
     .container {
         max-width: 400px;
         margin: 50px auto;
-        padding: 20px;
-        background-color: #fff;
+        padding: 40px;
+        background-color: lightblue;
         border-radius: 5px;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        height: 300px;
     }
     h2 {
         text-align: center;
@@ -66,20 +67,29 @@
         text-decoration: underline;
     }
     body{
-    background-color: lightblue;
+    background-color: rgb(223, 232, 235);
+    }
+    button{
+        background-color: rgb(85, 201, 239);
+        padding-top: 10px;
+        padding-bottom: 20px;
+        margin: 8px ;
+        border-radius: 4px;
+        height: 15px;
+        width: 70px;
     }
 </style>
 <body>
     <div class="container">
-        <h2>Admin Login</h2>
+        <h2> Login </h2>
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <label  for="username">Username:</label>
             <input type="text" id="username" name="username" required>
-
+            <br><br>
             <label for="password">Password:</label>
             <input type="password" id="password" name="password" required>
-
+            <br><br>
            <button type="submit">Login</button>
             
         </form>

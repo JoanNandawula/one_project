@@ -29,6 +29,8 @@
         width:500px;
         margin-left:200px;
         background-color:lightblue;
+        margin-bottom: 40px;
+        padding-bottom:40px ;
 
         
     }
@@ -55,7 +57,7 @@
             {% csrf_token %}
             {{ form | crispy }}
             <div class='button'>
-                <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;">Submit</button>
+                <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;  background-color: rgb(85, 201, 239);">Submit</button>
             </div>   
         </form>
     </div>

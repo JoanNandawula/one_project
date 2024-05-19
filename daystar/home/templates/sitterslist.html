@@ -23,7 +23,7 @@
 </style>
 <body>
 <h2>List of registered sitters</h2>
-<a href="/sittersform" class="btn btn-outline-secondary" style="margin-left: 100px;">Add Sitters</a>
+<a href="/sittersform" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239)">Add Sitters</a>
 <div class="container">
     <table class="table table-striped" style="width: 90%; margin-left: 20px;">
         <thead>
@@ -56,7 +56,7 @@
                 <td>{{ sitter.level_of_education }}</td>
                 <td>{{ sitter.nin }}</td>
                 <td>{{ sitter.date_of_birth }}</td>
-                <td><a href="{% url 'sitterview' id=sitter.id %}" class="btn btn-outline-secondary">View</a></td>
+                <td><a href="{% url 'sitterview' id=sitter.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239)" >View</a></td>
             </tr>
             {% endfor %}
         </tbody>

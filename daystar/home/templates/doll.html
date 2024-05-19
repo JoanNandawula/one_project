@@ -9,8 +9,8 @@
 
 
 <br>
-    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class=" btn btn-outline-secondary" placeholder="Receipts"/></a>
-    <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-outline-secondary" type="button"/></a>
+    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class=" btn btn-outline-secondary" placeholder="Receipts" style=" background-color: rgb(85, 201, 239);"/></a>
+    <!-- <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-outline-secondary" type="button"/></a> -->
 
 
 <div class="table-container">
@@ -48,7 +48,7 @@
            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             
             <td >
-                <a href="{% url 'dollscorner' dolls_id=doll.id %}" class="btn btn-outline-secondary">Sell Doll</a>
+                <a href="{% url 'dollscorner' dolls_id=doll.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">Sell Doll</a>
             </td>
 
 

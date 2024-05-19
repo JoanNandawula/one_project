@@ -51,7 +51,7 @@
 </style>
 
 <h2>List of registered Babies</h2>
-<a href="/babesform" class="btn btn-outline-secondary" style="margin-left: 100px;">Add Babies</a>
+<a href="/babesform" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239);">Add Babies</a>
 <div class="container">
 <table class="table table-striped" style="width: 90%; margin-left: 20px;" >
     <thead>
@@ -83,7 +83,7 @@
         <td>{{ baby.parentsname }}</td>
         <td>{{ baby.timein }}</td>
         <td>{{ baby.brought_by }}</td>
-        <td><a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary">View</a></td>
+        <td><a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">View</a></td>
         
       </tr> 
   
@@ -91,6 +91,8 @@
     </tbody>
   </table>
 </div>
+
+<br><br><br><br><br><br><br>
 
 
 
