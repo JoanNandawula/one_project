@@ -20,28 +20,26 @@
     
     <thead class="thead-dark table-bordered">
         <tr>
-            <th scope="col" class="project-h1">Item Name</th>
-            <th scope="col" class="project-h1">Item Quantity</th>
-            <th scope="col" class="project-h1">Item Received</th>
-            <th scope="col" class="project-h1">Item Total_Amount</th>
-            <th scope="col" class="project-h1">Item Purchase</th>
-            <th scope="col" class="project-h1">Item Out</th>
-            <th scope="col" class="project-h1">Item Stock_At_Hand</th>
+            <th scope="col">Item Name</th>
+            <th scope="col" >Item Quantity</th>
+            <th scope="col" >Item Received</th>
+            <th scope="col" >Item Total_Amount</th>
+            <th scope="col" >Item  Date of Purchase</th>
+            <th scope="col" >Item quantity_issued_out</th>
+            <th scope="col" >Item Stock_At_Hand</th>
         </tr>
     
     </thead>
     {% for item in shopstock %}
     <tbody>
-        <tr style="font-family: sans-serif;">
-            <td>{{Item.item_name}}</td>
-            <td>{{Item.quantity}}</td>
-            <td>{{Item.quantity_received}}</td>
-            <td>{{Item.Total_amount}}</td>
-            <td>{{Item.Date_of_purchase}}</td>
-            <td>{{Item.quantity_issued_out}}</td>
-            <td>{{Item.stock_at_hand}}</td>
-            
-    
+        <th scope="row">{{ item.id}}</th>
+            <td>{{item.item_name}}</td>
+            <td>{{item.quantity}}</td>
+            <td>{{item.quantity_received}}</td>
+            <td>{{item.Total_amount}}</td>
+            <td>{{item.Date_of_purchase}}</td>
+            <td>{{item.quantity_issued_out}}</td>
+            <td>{{item.stock_at_hand}}</td>
            <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
             
            

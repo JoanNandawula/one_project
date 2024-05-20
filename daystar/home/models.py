@@ -7,11 +7,14 @@ class Categorystay(models.Model):
 
     def __str__(self):
         return self.name
-
+class  Assigning_babies  (models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name  
 
    
 class Sittersform(models.Model):
-    s_name = models.CharField(max_length=200,)
+    sitter_name = models.CharField(max_length=200,)
     age = models.CharField(max_length=200, default=0)
     contact = models.CharField(max_length=200)
     gender = models.CharField(max_length=100)
@@ -21,18 +24,19 @@ class Sittersform(models.Model):
     level_of_education = models.CharField(max_length=50)
     nin = models.CharField(max_length=200)
     date_of_birth = models.DateField(max_length=200, default=0)
+    # Assigning_babies = models.ForeignKey(Babesform,on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.s_name
+        return self.sitter_name
 
 class Sarrival(models.Model):
-    s_names = models.ForeignKey(Sittersform,on_delete=models.CASCADE)
+    sitter_names = models.ForeignKey(Sittersform,on_delete=models.CASCADE)
     timein = models.TimeField(default=timezone.now)
     sittersno = models.IntegerField(default=0)
     date = models.DateField(default=timezone.now) 
 
     def __str__(self):
-        return self.s_names
+        return self.sitter_names
 
   
 
@@ -54,8 +58,8 @@ class Spayment(models.Model):
 
 class Babesform(models.Model):
     # c_stay = models.ForeignKey(Categorystay,on_delete=models.CASCADE,max_length=200)
-    c_stay=models.CharField(max_length=200)
-    b_name = models.CharField(max_length=200)
+    category_stay=models.CharField(max_length=200)
+    baby_name = models.CharField(max_length=200)
     age = models.CharField(max_length=200, default=0)
     gender = models.CharField(max_length=100)
     location = models.CharField(max_length=50, null=True, default=None)
@@ -64,13 +68,13 @@ class Babesform(models.Model):
     babysno = models.CharField(max_length=200, default=0)
     timein = models.DateTimeField()
     brought_by = models.CharField(max_length=200)
-    # Assigning_babies = models.ForeignKey(Sitterslist,on_delete=models.CASCADE)
+   
 
     def __str__(self):
-        return self.b_name
+        return self.baby_name
 
 class B_departure(models.Model):
-    b_names = models.ForeignKey(Babesform,on_delete=models.CASCADE)
+    baby_names = models.ForeignKey(Babesform,on_delete=models.CASCADE)
     person_taking_baby = models.CharField(max_length=200)
     telephone_no = models.CharField(max_length=200)
     timeout = models.DateTimeField()
@@ -79,8 +83,13 @@ class B_departure(models.Model):
 
     def __str__(self):
         return self.b_names
+
+class  category_payment_id(models.Model):
+    name = models.CharField(max_length=100)
+    def __str__(self):
+        return self.name  
 class Bpayment(models.Model):
-    c_payment_id = models.ForeignKey(Categorystay, on_delete=models.CASCADE, max_length=200)
+    category_payment_id = models.ForeignKey(Categorystay, on_delete=models.CASCADE, max_length=200)
     Payno = models.IntegerField(default=0)
     currency = models.IntegerField(default=0, choices=[(10000, '10000'), (15000, '15000'), (300000, '300000'), (450000, '450000')])
     amount_paid = models.IntegerField(default=0)
@@ -101,7 +110,7 @@ class Category_doll(models.Model):
         return self.name      
 
 class Doll(models.Model):
-    c_doll = models.ForeignKey(Category_doll, on_delete=models.CASCADE, null=True, blank=True)
+    category_doll = models.ForeignKey(Category_doll, on_delete=models.CASCADE, null=True, blank=True)
     name_of_the_doll = models.CharField(max_length=200, null=True, blank=True)
     quantity = models.IntegerField(default=0)
     issued_quantity = models.IntegerField(default=0, blank=True, null=True) 
