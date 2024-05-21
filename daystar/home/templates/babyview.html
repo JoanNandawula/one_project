@@ -28,15 +28,15 @@
     
       <tr>
         <th scope="row">{{ baby_info.id}}</th>
-        <td>{{ baby_info.c_stay }}</td>
-        <td>{{ baby_info.b_name }}</td>
+        <td>{{ baby_info.category_stay }}</td>
+        <td>{{ baby_info.baby_name }}</td>
         <td>{{ baby_info.gender}}</td>
         <td>{{ baby_info.age }}</td>
         <td>{{ baby_info.location }}</td>
         <td>{{ baby_info.sponsor }}</td>
         <td>{{ baby_info.parentsname }}</td>
         <td>{{ baby_info.date }}</td>
-        <td><a href="{% url 'babyedit' id=baby_info.id %}" class="btn btn-outline-secondary">Edit Baby</a></td>
+        <td><a href="{% url 'babyedit' id=baby_info.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239)">Edit Baby</a></td>
         <a href="/babesform" class="btn btn-outline-secondary">Add Babies</a>
       </tr>
       

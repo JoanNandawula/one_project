@@ -155,6 +155,5 @@ def total_quantity(self):
     total = self.quantity + self.quantity_received
     return total
 
-
     def _str_(self):
         return self.item_name
