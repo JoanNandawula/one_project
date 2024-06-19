@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  body{
+    background-color: lightblue;
+  }
+
+</style>
+
+<h2 style="text-align: center;">List of registered sitters</h2>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Timein</th>
+        <th scope="col">Sotterno</th>
+        <th scope="col">Date</th>
+        <th scope="col">Action</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      <tr>
+        <th scope="row">{{ sarrival_info.id}}</th>
+        <td>{{ sitter_info.sitter_names }}</td>
+        <td>{{ sitter_info.timein }}</td>
+        <td>{{ sitter_info.sittersno }}</td>
+        <td>{{ sitter_info.date }}</td>
+        <td><a href="{% url 'sarrivaledit' id=sitter_info.id %}">Edit Sitter</a></td>
+
+      </tr>
+     
+      
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -1,9 +1,8 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <style>
-  body{
+  body {
     background-color: lightblue;
   }
   .container {
@@ -19,41 +18,26 @@
     color: black; 
   }
 
-  /* table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-left: auto;
-    margin-right: auto;
-  } */
-
-  th,
-  td {
+  th, td {
     border: 1px solid #dddddd;
     text-align: left;
     padding: 8px;
     white-space: nowrap;
   }
+
   body {
     overflow-x: hidden;
-
   }
-
-  /* th {
-    background-color: #4CAF50; 
-    color: white; 
-  } */
-
-  /* tr:nth-child(even) {
-    background-color: #f2f2f2; 
-  } */
-
-  
 </style>
 
 <h2>List of registered Babies</h2>
-<a href="/babesform" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239);">Add Babies</a>
+<a href="/babesform" class="btn btn-outline-secondary" style="margin-left: 100px; background-color: rgb(85, 201, 239);">Add Babies</a>
+<form method="GET" action="{% url 'sitters' %}" style="margin: 20px;">
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-primary">Search</button>
+</form>
 <div class="container">
-<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+  <table class="table table-striped" style="width: 90%; margin-left: 20px;">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -62,38 +46,44 @@
         <th scope="col">Gender</th>
         <th scope="col">Age</th>
         <th scope="col">Location</th>
-        <th scope="col">sponsor</th>
-        <th scope="col">parentsname</th>
-        <th scope="col">Timein</th>
-        <th scope="col">Brought_by</th>
+        <th scope="col">Sponsor</th>
+        <th scope="col">Parents Name</th>
+        <th scope="col">Time In</th>
+        <th scope="col">Brought By</th>
         <th scope="col">Action</th>
-
       </tr>
     </thead>
     <tbody>
-        {% for baby in babyslist %}
+      {% for baby in babyslist %}
       <tr>
         <th scope="row">{{ baby.id }}</th>
         <td>{{ baby.category_stay }}</td>
         <td>{{ baby.baby_name }}</td>
-        <td>{{ baby.gender}}</td>
+        <td>{{ baby.gender }}</td>
         <td>{{ baby.age }}</td>
         <td>{{ baby.location }}</td>
         <td>{{ baby.sponsor }}</td>
         <td>{{ baby.parentsname }}</td>
         <td>{{ baby.timein }}</td>
         <td>{{ baby.brought_by }}</td>
-        <td><a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">View</a></td>
-        
+        <td>
+          <a href="{% url 'babyview' id=baby.id %}" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239);">View</a>
+          <form action="{% url 'babydelete' id=baby.id %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+          </form>
+        </td>
       </tr> 
-  
       {% endfor %}
     </tbody>
   </table>
 </div>
 
 <br><br><br><br><br><br><br><br><br>
-
-
+<script>
+  function confirmDelete() {
+      return confirm('Are you sure you want to delete?');
+  }
+</script>
 
 {% endblock %}

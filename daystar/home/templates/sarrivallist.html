@@ -1,20 +1,19 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <style>
-  h2{
+  h2 {
     text-align: center;
   }
-  body{
+  body {
     background-color: lightblue;
   }
 </style>
 
 <h2>List of arrived sitters</h2>
-<a href="/sarrival" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239);">Add Sitter</a>
+<a href="{% url 'sarrival' %}" class="btn btn-outline-secondary" style="margin-left: 100px; background-color: rgb(85, 201, 239);">Add Sitter</a>
 <div class="container">
-<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+  <table class="table table-striped" style="width: 90%; margin-left: 20px;">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -22,24 +21,21 @@
         <th scope="col">Timein</th>
         <th scope="col">Sittersno</th>
         <th scope="col">Date</th>
-
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
-        {% for sitter in sarrivallist %}
+      {% for sitter in sarrivallist %}
       <tr>
-        <th scope="row">{{ sitter.id}}</th>
+        <th scope="row">{{ sitter.id }}</th>
         <td>{{ sitter.sitter_names }}</td>
         <td>{{ sitter.timein }}</td>
         <td>{{ sitter.sittersno }}</td>
         <td>{{ sitter.date }}</td>
+        <td><a href="{% url 'sarrivalview' id=sitter.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239)" >View</a>
       </tr>
       {% endfor %}
-      
     </tbody>
   </table>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
-
-{% endblock %}
+{% endblock %}

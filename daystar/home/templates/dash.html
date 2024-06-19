@@ -47,15 +47,22 @@
             border-radius: 5px;
             padding: 20px;
             width: 250px;
-            height: 90px;
+            height: 150px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px; /* Add some margin between cards */
+            margin-bottom: 10px;
             margin-left: 20px;
             margin-right: 20px;
             margin-bottom: 20px;
-            
+        }
+
+        .card img {
+            border-radius: 5px;
+            width: 50px;
+            height: 50px;
+            margin-bottom: 10px;
         }
 
         .card h4 {
@@ -106,12 +113,15 @@
             {% csrf_token %}
             <div class="card-container">
                 <div class="card">
+                    <img src="{% static 'sitters.png' %}" alt="sitters Image">
                     <h4><a href="{% url 'sittersform' %}">Sitter's Registration Form</a></h4>
                 </div>
                 <div class="card">
+                    <img src="{% static 'babes.png' %}" alt="Baby Image">
                     <h4><a href="{% url 'babesform' %}">Baby's Registration Form</a></h4>
                 </div>
                 <div class="card">
+                    <img src="{% static 'procurement.png' %}" alt="ProcurementImage">
                     <h4><a href="{% url 'doll' %}">Procurement</a></h4>
                 </div>
                 <!-- Add more cards if needed -->

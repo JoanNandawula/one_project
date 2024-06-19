@@ -21,6 +21,7 @@
         <th scope="col">Telephone_no</th>
         <th scope="col">Timeout</th>
         <th scope="col">Babyno</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -32,10 +33,10 @@
         <td>{{ baby.telephone_no }}</td>
         <td>{{ baby.timeout }}</td>
         <td>{{ baby.babyno }}</td>
+        <td><a href="{% url 'bdepartureview' id=baby.id %}" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239);">View</a></td>
       </tr>
       {% endfor %}
     </tbody>
- 
     
   </table>
 </div>

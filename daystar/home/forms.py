@@ -68,5 +68,16 @@ class  AddShop(ModelForm):
         model = Shopform
         fields = '__all__'
 
+        from django import forms
+
+
+
+class SitterSearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100, required=False)
+
+
+class BabySearchForm(forms.Form):
+    query = forms.CharField(label='Search', max_length=100, required=False)
+
 
 

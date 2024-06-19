@@ -24,17 +24,17 @@ def reset_password(request):
 def logout(request):
    return render(request,'logout.html') 
 
-def arrival(request):
-    if request.method == 'POST':
-        form = AddArrival(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form)
-            messages.success(request, 'Baby added successfully')
-            return redirect('arrivallist')
-    else:
-        form = AddArrival()
-    return render (request, 'arrival.html',{'form':form})
+# def arrival(request):
+#     if request.method == 'POST':
+#         form = AddArrival(request.POST)
+#         if form.is_valid():
+#             form.save()
+#             print(form)
+#             messages.success(request, 'Baby added successfully')
+#             return redirect('arrivallist')
+#     else:
+#         form = AddArrival()
+#     return render (request, 'arrival.html',{'form':form})
 
 def sarrival(request):
     if request.method == 'POST':
@@ -102,16 +102,9 @@ def bdeparturelist(request):
    bdeparturelist = B_departure.objects.all()
    return render (request, 'bdeparturelist.html',{'bdeparturelist':bdeparturelist})
 
-
-   
-def arrivallist(request):
-   arrivallist = Arrival.objects.all()
-   return render (request, 'arrivallist.html',{'arrivallist':arrivallist})
-
-def sarrivallist(request):
-   sarrivallist = Sarrival.objects.all()
-   return render (request, 'sarrivallist.html',{'sarrivallist':sarrivallist})
-
+def Sarrivallist(request):
+    sarrivallist = Sarrival.objects.all()  # Retrieve all instances of Sarrival
+    return render(request, 'sarrivallist.html', {'sarrivallist': sarrivallist})
 
 
 
@@ -163,6 +156,24 @@ def sittersedit(request,id):
 def  sitterview(request,id):
     sitter_info=Sittersform.objects.get(id=id)   
     return render(request,'sitterview.html',{'sitter_info':sitter_info})
+
+def  sarrivalview(request,id):
+    sitter_info=Sarrival.objects.get(id=id)   
+    return render(request,'sarrivalview.html',{'sitter_info':sitter_info})
+
+@login_required
+def sarrivaledit(request,id):
+    sitter=get_object_or_404(Sarrival,id=id)
+    if request.method == 'POST':
+       form=AddSarrival(request.POST,instance=sitter)
+       if form.is_valid():
+           form.save()
+           return redirect('sarrivallist')
+    else:
+        form=AddSarrival(instance=sitter)
+    return render(request,'sarrivaledit.html',{'form':form,'sitter':sitter})
+    
+    
 #babyregistration
 @login_required
 def babesform(request):
@@ -196,6 +207,22 @@ def babyedit(request,id):
 def  babyview(request,id):
     baby_info=Babesform.objects.get(id=id)   
     return render(request,'babyview.html',{'baby_info':baby_info})
+
+@login_required
+def bdepartureedit(request,id):
+    baby=get_object_or_404(Babesform,id=id)
+    if request.method == 'POST':
+       form=AddBabe(request.POST,instance=baby)
+       if form.is_valid():
+           form.save()
+           return redirect('babyslist')
+    else:
+        form=AddBabe(instance=baby)
+    return render(request,'bdepartureedit.html',{'form':form,'baby':baby})
+    
+def  bdepartureview(request,id):
+    baby_info=Babesform.objects.get( Babesform,id=id)   
+    return render(request,'bdepartureview.html',{'baby_info':baby_info})
     
 #dollscorner
 def dollscorner(request, dolls_id):
@@ -284,3 +311,62 @@ def shopform(request):
 def shopstock(request):
    shopstock = Shopform.objects.all()
    return render (request, 'shopstock.html',{'shopstock':shopstock})
+
+def babydelete(request, id):
+    baby = get_object_or_404(Babesform, id=id)
+    
+    if request.method == 'POST':
+        baby.delete()
+        return redirect('babyslist')
+    
+    return redirect('babyslist')
+
+def sitterdelete(request, id):
+    sitter = get_object_or_404(Sittersform, id=id)
+    
+    if request.method == 'POST':
+        sitter.delete()
+        return redirect('sitterslist')
+    
+    return redirect('sitterslist')
+
+
+@login_required
+def home(request):
+    count_sitters = Sitter_registration.objects.count()
+    count_babies_signed_out = Baby_departure.objects.filter(departure_time__date=date.today()).count()
+    count_sitters_signed_in = Arrivalsitter.objects.filter(Arrival_Date__date=date.today()).count()
+    count_babies_registered = Babie_registration.objects.filter(Arrival_Date=date.today()).count()
+    count_babies_total = count_babies_registered - count_babies_signed_out
+    context = {
+        "count_sitters": count_sitters,  # Total sitters registered
+        "count_babies": count_babies_total,  # Total babies currently signed in
+        "count_babies_signed_out": count_babies_signed_out,  # Babies signed out today
+        "count_sitters_signed_in": count_sitters_signed_in,}  # Sitters signed in today
+        
+    return render(request, "home.html", context)
+
+ 
+
+def sitter_list_view(request):
+    form = SitterSearchForm(request.GET or None)
+    query = request.GET.get('query')
+    if query:
+        sitterslist = Sittersform.objects.filter(sitter_name__icontains=query)  # Adjust the field as necessary
+    else:
+        sitterslist = Sittersform.objects.all()
+    return render(request, 'sitterslist.html', {'sitterslist': sitterslist, 'form': form})
+
+def baby_list_view(request):
+    form = BabySearchForm(request.GET or None)
+    query = request.GET.get('query')
+    if query:
+        babyslist = Babesform.objects.filter(sitter_name__icontains=query)  # Adjust the field as necessary
+    else:
+        sitterslist = Babesform.objects.all()
+    return render(request, 'Babyslist.html', {'babyslist': babyslist, 'form': form})
+
+def dashboard_view(request):
+    sitter_count = Sitter.objects.count()  # Total count of all sitters
+    return render(request, 'dashboard.html', {'sitter_count': sitter_count})
+
