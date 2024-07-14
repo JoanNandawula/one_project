@@ -309,8 +309,8 @@ def shopform(request):
    return render(request,'shopform.html',{'form':form})
 
 def shopstock(request):
-   shopstock = Shopform.objects.all()
-   return render (request, 'shopstock.html',{'shopstock':shopstock})
+    shopstock = Shopform.objects.all()
+    return render(request, 'shopstock.html', {'shopstock': shopstock})
 
 def babydelete(request, id):
     baby = get_object_or_404(Babesform, id=id)

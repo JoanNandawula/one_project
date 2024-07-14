@@ -138,22 +138,24 @@ class Salesrecord(models.Model):
         return int(change)
       
 
+
+
 class Shopform(models.Model):
-    item_name = models.CharField(max_length=100, choices=( 
+    ITEM_CHOICES = (
         ('Fruits', 'Fruits'),
         ('Diapers', 'Diapers'),
         ('Milk', 'Milk'),
-        ('Toys', 'Toys')))
+        ('Toys', 'Toys'),
+    )
+    item_name = models.CharField(max_length=100, choices=ITEM_CHOICES)
     quantity = models.IntegerField(default=0, null=True, blank=True)
-    quantity_received = models.IntegerField(default=0, null=True, blank=True)
-    Total_amount = models.IntegerField(default=0, null=True, blank=True)
-    Date_of_purchase = models.DateField(default=timezone.now())
-    quantity_issued_out = models.IntegerField(default=0, null=True, blank=True)
-    stock_at_hand = models.IntegerField(default=0, null=True, blank=True)
-    
-def total_quantity(self):
-    total = self.quantity + self.quantity_received
-    return total
+    Date_of_purchase = models.DateField(default=timezone.now)
+    unit_price = models.IntegerField(default=0)
+    total_amount = models.DecimalField(max_digits=10, decimal_places=2, default=0.00)
 
-    def _str_(self):
+    def save(self, *args, **kwargs):
+        self.total_amount = self.quantity * self.unit_price
+        super().save(*args, **kwargs)
+
+    def __str__(self):
         return self.item_name
