@@ -132,8 +132,8 @@ def sitterslist(request):
    return render (request, 'sitterslist.html',{'sitterslist':sitterslist})
 
 def spaymentlist(request):
-   spaymentlist = Spayment.objects.all()
-   return render (request, 'spaymentlist.html',{'spaymentlist':spaymentlist})
+   spayments= Spayment.objects.all()
+   return render (request, 'spaymentlist.html',{'spaymentlist':spayments})
 
 def bpaymentlist(request):
    bpaymentlist = Bpayment.objects.all()
@@ -151,6 +151,20 @@ def sittersedit(request,id):
         form=AddSitter(instance=sitter)
     return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
     
+   
+@login_required
+def Itemedit(request,id):
+    item=get_object_or_404(Shopform,id=id)
+    if request.method == 'POST':
+       form=AddShop(request.POST,instance=item)
+       if form.is_valid():
+           form.save()
+           return redirect('shopstock')
+    else:
+        form=AddShop(instance=item)
+    return render(request,'itemedit.html',{'form':form,'item':item}) 
+    
+
 
 
 def  sitterview(request,id):
@@ -204,12 +218,8 @@ def babyedit(request,id):
         form=AddBabe(instance=baby)
     return render(request,'babyedit.html',{'form':form,'baby':baby})
 
-def  babyview(request,id):
-    baby_info=Babesform.objects.get(id=id)   
-    return render(request,'babyview.html',{'baby_info':baby_info})
-
 @login_required
-def bdepartureedit(request,id):
+def babyedit(request,id):
     baby=get_object_or_404(Babesform,id=id)
     if request.method == 'POST':
        form=AddBabe(request.POST,instance=baby)
@@ -218,6 +228,27 @@ def bdepartureedit(request,id):
            return redirect('babyslist')
     else:
         form=AddBabe(instance=baby)
+    return render(request,'babyedit.html',{'form':form,'baby':baby})
+
+def  babyview(request,id):
+    baby_info=Babesform.objects.get(id=id)   
+    return render(request,'babyview.html',{'baby_info':baby_info})
+
+
+# 
+
+
+
+@login_required
+def bdepartureedit(request,id):
+    baby=get_object_or_404(Babesform,id=id)
+    if request.method == 'POST':
+       form=AddShop(request.POST,instance=baby)
+       if form.is_valid():
+           form.save()
+           return redirect('babyslist')
+    else:
+        form=AddShop(instance=baby)
     return render(request,'bdepartureedit.html',{'form':form,'baby':baby})
     
 def  bdepartureview(request,id):
@@ -312,6 +343,7 @@ def shopstock(request):
     shopstock = Shopform.objects.all()
     return render(request, 'shopstock.html', {'shopstock': shopstock})
 
+
 def babydelete(request, id):
     baby = get_object_or_404(Babesform, id=id)
     
@@ -330,6 +362,14 @@ def sitterdelete(request, id):
     
     return redirect('sitterslist')
 
+def itemdelete(request, id):
+    item = get_object_or_404(Shopform, id=id)
+    
+    if request.method == 'POST':
+        item.delete()
+        return redirect('shopstock')
+    
+    return redirect('shopstock')
 
 @login_required
 def home(request):
@@ -344,7 +384,7 @@ def home(request):
         "count_babies_signed_out": count_babies_signed_out,  # Babies signed out today
         "count_sitters_signed_in": count_sitters_signed_in,}  # Sitters signed in today
         
-    return render(request, "home.html", context)
+    return render(request, "dash.html", context)
 
  
 
@@ -369,4 +409,9 @@ def baby_list_view(request):
 def dashboard_view(request):
     sitter_count = Sitter.objects.count()  # Total count of all sitters
     return render(request, 'dashboard.html', {'sitter_count': sitter_count})
+def shopstockview(request, id):
+    item_info = Shopform.objects.get(id=id)
+    return render(request, 'shopstockview.html', {'item_info': item_info})
+
+
 

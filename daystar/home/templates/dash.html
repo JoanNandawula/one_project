@@ -112,9 +112,18 @@
         <form action="{% url 'login' %}" method="POST">
             {% csrf_token %}
             <div class="card-container">
-                <div class="card">
+                <!-- <div class="card">
                     <img src="{% static 'sitters.png' %}" alt="sitters Image">
                     <h4><a href="{% url 'sittersform' %}">Sitter's Registration Form</a></h4>
+                </div> -->
+                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                    <div class="card-header">Total Sitters</div>
+                    <div class="card-body">
+                        <h5 class="card-title">{{ sitter_count }}</h5>
+                        <p class="card-text">Number of sitters registered in the system.</p>
+                        <img src="{% static 'sitters.png' %}" alt="sitters Image">
+                        <h4><a href="{% url 'sittersform' %}">Sitter's Registration Form</a></h4>
+                    </div>
                 </div>
                 <div class="card">
                     <img src="{% static 'babes.png' %}" alt="Baby Image">
@@ -124,10 +133,7 @@
                     <img src="{% static 'procurement.png' %}" alt="ProcurementImage">
                     <h4><a href="{% url 'doll' %}">Procurement</a></h4>
                 </div>
-                <div class="card">
-                    <img src="{% static 'shopform.png' %}" alt="ProcurementImage">
-                    <h4><a href="{% url 'shopform' %}">Inventory</a></h4>
-                </div>
+              
 
 
                 <!-- Add more cards if needed -->

@@ -5,6 +5,9 @@
     body {
         background-color: lightblue;
     }
+    h4 {
+        text-align: center;
+    }
 </style>
 
 <br>
@@ -23,6 +26,7 @@
             <th scope="col">Item Unit Price</th>
             <th scope="col">Item Total Amount</th>
             <th scope="col">Item Date of Purchase</th>
+            <th scope="col">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -34,10 +38,21 @@
             <td>{{ item.unit_price }}</td>
             <td>{{ item.total_amount }}</td>
             <td>{{ item.Date_of_purchase }}</td>
+            <td><a href="{% url 'shopstockview' id=item.id %}" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239)">View</a>
+                <form action="{% url 'itemdelete' id=item.id %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+           </td>
         </tr>
         {% endfor %}
     </tbody>
 </table>
 
-<br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br>
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete?');
+    }
+  </script>
 {% endblock %}

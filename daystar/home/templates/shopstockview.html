@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<style>
+  body{
+    background-color: lightblue;
+  }
+
+</style>
+
+<h2 style="text-align: center;">List of Items in stock</h2>
+<div class="container">
+<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Item Name</th>
+        <th scope="col">Item Quantity</th>
+        <th scope="col">Item Unit Price</th>
+        <th scope="col">Item Total Amount</th>
+        <th scope="col">Item Date of Purchase</th>
+      </tr>
+    </thead>
+    <tbody>
+       
+      <tr>
+        <th scope="row">{{ item_info.id}}</th>
+        <td>{{ item_info.item_name }}</td>
+        <td>{{ item_info.quantity}}</td>
+        <td>{{ item_info.Date_of_purchase }}</td>
+        <td>{{ item_info.unit_price }}</td>
+        <td><a href="{% url 'itemedit' id=item_info.id %}">Edit Item</a></td>
+      </tr>
+     
+      
+    </tbody>
+  </table>
+</div>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

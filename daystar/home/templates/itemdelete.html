@@ -53,10 +53,10 @@
 <h3 style='margin-top: 50px; margin-left:300px;' >BABY'S REGISTRATION FORM</h3>
 <div class="container" >
     
-    <form action="" method="POST" class='babesform'>
+    <form method="post" action="{% url 'your_view_name' %}">
         {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-outline-secondary">Submit</button>
+        <!-- Your form fields here -->
+        <button type="submit">Submit</button>
     </form>
   
 </div>

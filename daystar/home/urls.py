@@ -33,6 +33,9 @@ urlpatterns = [
     path('shopstock/',views.shopstock, name='shopstock'),
     path('receipt/',views.receipt,name='receipt'),#receipt
     path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),#receipt details
+    path('shopstock/<int:id>/', views.shopstockview, name='shopstockview'),
+     path('itemdelete/<int:id>/', views.itemdelete, name='itemdelete'),
+    path('itemedit/<int:id>/', views.Itemedit, name='itemedit'),
 
     #sitterregistration
     path('sittersform/', views.sittersform, name='sittersform'),
@@ -56,7 +59,10 @@ urlpatterns = [
     path('babyview/<int:id>/',views.babyview,name='babyview'),
     path('babyedit/<int:id>/',views.babyedit,name='babyedit'),
     path('baby/<int:id>/delete/',views.babydelete, name='babydelete'),
-    path('bpayment/',views.bpayment, name='bpayment'),#babypayment
+    # path('itemview/<int:id>/',views.sitterview, name='itemview'),
+    # path('shopstockedit/<int:id>/',views.shopstockedit, name='shopstockedit'),
+    path('bpayment/',views.bpayment, name='bpayment'),
+    #babypayment
     # path('baby/<int:id>/delete/',views.babydelete, name='babydelete'),
     # path('baby/', views.baby_list_view, name='baby'),
 ]
