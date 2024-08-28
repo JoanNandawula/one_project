@@ -132,8 +132,8 @@ def sitterslist(request):
    return render (request, 'sitterslist.html',{'sitterslist':sitterslist})
 
 def spaymentlist(request):
-   spayments= Spayment.objects.all()
-   return render (request, 'spaymentlist.html',{'spaymentlist':spayments})
+   spaymentlist= Spayment.objects.all()
+   return render (request, 'spaymentlist.html',{'spaymentlist':spaymentlist})
 
 def bpaymentlist(request):
    bpaymentlist = Bpayment.objects.all()
@@ -141,7 +141,7 @@ def bpaymentlist(request):
 
 @login_required
 def sittersedit(request,id):
-    sitter=get_object_or_404(Sittersform,id=id)
+    sitter=get_object_or_404(Sittersform)
     if request.method == 'POST':
        form=AddSitter(request.POST,instance=sitter)
        if form.is_valid():
@@ -234,8 +234,6 @@ def  babyview(request,id):
     baby_info=Babesform.objects.get(id=id)   
     return render(request,'babyview.html',{'baby_info':baby_info})
 
-
-# 
 
 
 
