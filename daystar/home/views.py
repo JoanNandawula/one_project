@@ -24,6 +24,18 @@ def reset_password(request):
 def logout(request):
    return render(request,'logout.html') 
 
+def login(request):
+   return render (request, 'login.html')
+
+def dash(request):
+   return render(request,'dash.html')  
+
+def logout(request):
+    logout(request)
+    return redirect('index')
+    getbabeform = AddBabe()
+    return render(request,'sitters/logout.html',{'getlogout':getlogout})
+
 # def arrival(request):
 #     if request.method == 'POST':
 #         form = AddArrival(request.POST)
@@ -36,25 +48,6 @@ def logout(request):
 #         form = AddArrival()
 #     return render (request, 'arrival.html',{'form':form})
 
-def sarrival(request):
-    if request.method == 'POST':
-        form = AddSarrival(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form)
-            messages.success(request, 'Sitter added successfully')
-            return redirect('sarrivallist')
-    else:
-        form = AddSarrival()
-    return render (request, 'sarrival.html',{'form':form})
-         
-
-def dash(request):
-   return render(request,'dash.html')  
-
-
-         
-   
 
 def bdeparture(request):
    if request.method == 'POST':
@@ -85,108 +78,14 @@ def bpayment(request):
         return render(request, 'bpayment.html', {'form': form})
 
 
-def spayment(request):
-        if request.method == 'POST':
-            form = AddSpayment(request.POST)
-            if form.is_valid():
-                form.save()
-                return redirect('spaymentlist')  
-        else:
-            form = AddSpayment()
-        return render(request, 'spayment.html', {'form': form})
-        
-def login(request):
-   return render (request, 'login.html')
-
 def bdeparturelist(request):    
    bdeparturelist = B_departure.objects.all()
    return render (request, 'bdeparturelist.html',{'bdeparturelist':bdeparturelist})
-
-def Sarrivallist(request):
-    sarrivallist = Sarrival.objects.all()  # Retrieve all instances of Sarrival
-    return render(request, 'sarrivallist.html', {'sarrivallist': sarrivallist})
-
-
-
-
-def logout(request):
-    logout(request)
-    return redirect('index')
-    getbabeform = AddBabe()
-    return render(request,'sitters/logout.html',{'getlogout':getlogout})
-#sitterregistration form
-@login_required
-def sittersform(request):
-    if request.method == 'POST':
-        form = AddSitter(request.POST)
-        if form.is_valid():
-            form.save()
-            print(form)
-            messages.success(request, 'sitter added successfully')
-            return redirect('sitterslist')
-    else:
-        form = AddSitter()
-    return render(request,'sittersform.html',{'form':form})
-def sitterslist(request):
-   sitterslist = Sittersform.objects.all()
-   return render (request, 'sitterslist.html',{'sitterslist':sitterslist})
-
-def spaymentlist(request):
-   spaymentlist= Spayment.objects.all()
-   return render (request, 'spaymentlist.html',{'spaymentlist':spaymentlist})
 
 def bpaymentlist(request):
    bpaymentlist = Bpayment.objects.all()
    return render (request, 'bpaymentlist.html',{'bpaymentlist':bpaymentlist})
 
-@login_required
-def sittersedit(request,id):
-    sitter=get_object_or_404(Sittersform)
-    if request.method == 'POST':
-       form=AddSitter(request.POST,instance=sitter)
-       if form.is_valid():
-           form.save()
-           return redirect('sitterslist')
-    else:
-        form=AddSitter(instance=sitter)
-    return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
-    
-   
-@login_required
-def Itemedit(request,id):
-    item=get_object_or_404(Shopform,id=id)
-    if request.method == 'POST':
-       form=AddShop(request.POST,instance=item)
-       if form.is_valid():
-           form.save()
-           return redirect('shopstock')
-    else:
-        form=AddShop(instance=item)
-    return render(request,'itemedit.html',{'form':form,'item':item}) 
-    
-
-
-
-def  sitterview(request,id):
-    sitter_info=Sittersform.objects.get(id=id)   
-    return render(request,'sitterview.html',{'sitter_info':sitter_info})
-
-def  sarrivalview(request,id):
-    sitter_info=Sarrival.objects.get(id=id)   
-    return render(request,'sarrivalview.html',{'sitter_info':sitter_info})
-
-@login_required
-def sarrivaledit(request,id):
-    sitter=get_object_or_404(Sarrival,id=id)
-    if request.method == 'POST':
-       form=AddSarrival(request.POST,instance=sitter)
-       if form.is_valid():
-           form.save()
-           return redirect('sarrivallist')
-    else:
-        form=AddSarrival(instance=sitter)
-    return render(request,'sarrivaledit.html',{'form':form,'sitter':sitter})
-    
     
 #babyregistration
 @login_required
@@ -252,6 +151,131 @@ def bdepartureedit(request,id):
 def  bdepartureview(request,id):
     baby_info=Babesform.objects.get( Babesform,id=id)   
     return render(request,'bdepartureview.html',{'baby_info':baby_info})
+
+
+def spayment(request):
+        if request.method == 'POST':
+            form = AddSpayment(request.POST)
+            if form.is_valid():
+                form.save()
+                return redirect('spaymentlist')  
+        else:
+            form = AddSpayment()
+        return render(request, 'spayment.html', {'form': form})
+        
+
+
+def Sarrivallist(request):
+    sarrivallist = Sarrival.objects.all()  # Retrieve all instances of Sarrival
+    return render(request, 'sarrivallist.html', {'sarrivallist': sarrivallist})
+
+
+
+
+
+#sitterregistration form
+@login_required
+def sittersform(request):
+    if request.method == 'POST':
+        form = AddSitter(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+            messages.success(request, 'sitter added successfully')
+            return redirect('sitterslist')
+    else:
+        form = AddSitter()
+    return render(request,'sittersform.html',{'form':form})
+def sitterslist(request):
+   sitterslist = Sittersform.objects.all()
+   return render (request, 'sitterslist.html',{'sitterslist':sitterslist})
+
+def spaymentlist(request):
+   spaymentlist= Spayment.objects.all()
+   return render (request, 'spaymentlist.html',{'spaymentlist':spaymentlist})
+def sarrival(request):
+    if request.method == 'POST':
+        form = AddSarrival(request.POST)
+        if form.is_valid():
+            form.save()
+            print(form)
+            messages.success(request, 'Sitter added successfully')
+            return redirect('sarrivallist')
+    else:
+        form = AddSarrival()
+    return render (request, 'sarrival.html',{'form':form})
+
+
+@login_required
+def sittersedit(request,id):
+    sitter=get_object_or_404(Sittersform)
+    if request.method == 'POST':
+       form=AddSitter(request.POST,instance=sitter)
+       if form.is_valid():
+           form.save()
+           return redirect('sitterslist')
+    else:
+        form=AddSitter(instance=sitter)
+    return render(request,'sittersedit.html',{'form':form,'sitter':sitter})
+
+
+
+
+def  sitterview(request,id):
+    sitter_info=Sittersform.objects.get(id=id)   
+    return render(request,'sitterview.html',{'sitter_info':sitter_info})
+
+def  sarrivalview(request,id):
+    sitter_info=Sarrival.objects.get(id=id)   
+    return render(request,'sarrivalview.html',{'sitter_info':sitter_info})
+
+@login_required
+def sarrivaledit(request,id):
+    sitter=get_object_or_404(Sarrival,id=id)
+    if request.method == 'POST':
+       form=AddSarrival(request.POST,instance=sitter)
+       if form.is_valid():
+           form.save()
+           return redirect('sarrivallist')
+    else:
+        form=AddSarrival(instance=sitter)
+    return render(request,'sarrivaledit.html',{'form':form,'sitter':sitter})
+
+def sitterdelete(request, id):
+    sitter = get_object_or_404(Sittersform, id=id)
+    
+    if request.method == 'POST':
+        sitter.delete()
+        return redirect('sitterslist')
+    
+    return redirect('sitterslist')
+
+
+def sarrivaldelete(request, id):
+    sitter = get_object_or_404(Sittersform, id=id)
+    
+    if request.method == 'POST':
+        sitter.delete()
+        return redirect('sarrivallist')
+    
+    return redirect('sarrivallist')
+    
+   
+@login_required
+def Itemedit(request,id):
+    item=get_object_or_404(Shopform,id=id)
+    if request.method == 'POST':
+       form=AddShop(request.POST,instance=item)
+       if form.is_valid():
+           form.save()
+           return redirect('shopstock')
+    else:
+        form=AddShop(instance=item)
+    return render(request,'itemedit.html',{'form':form,'item':item}) 
+    
+
+    
+
     
 #dollscorner
 def dollscorner(request, dolls_id):
@@ -351,14 +375,7 @@ def babydelete(request, id):
     
     return redirect('babyslist')
 
-def sitterdelete(request, id):
-    sitter = get_object_or_404(Sittersform, id=id)
-    
-    if request.method == 'POST':
-        sitter.delete()
-        return redirect('sitterslist')
-    
-    return redirect('sitterslist')
+
 
 def itemdelete(request, id):
     item = get_object_or_404(Shopform, id=id)

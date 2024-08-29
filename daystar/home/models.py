@@ -148,6 +148,7 @@ class Shopform(models.Model):
         ('Milk', 'Milk'),
         ('Toys', 'Toys'),
     )
+    baby_names = models.ForeignKey(Babesform, on_delete=models.CASCADE, null=True)
     item_name = models.CharField(max_length=100, choices=ITEM_CHOICES)
     quantity = models.IntegerField(default=0, null=True, blank=True)
     Date_of_purchase = models.DateField(default=timezone.now)

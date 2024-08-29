@@ -21,6 +21,7 @@ urlpatterns = [
     path('bdepartureview/<int:id>/',views.bdepartureview,name='bdepartureview'),
     path('bdepartureedit/<int:id>/',views.bdepartureedit,name='bdepartureedit'),
     path('dashboard/', views.dashboard_view, name='dashboard'),
+    path('bpaymentlist/',views.bpaymentlist, name='bpaymentlist'),
     
    
 
@@ -34,22 +35,22 @@ urlpatterns = [
     path('receipt/',views.receipt,name='receipt'),#receipt
     path('receipt_detail/<int:receipt_id>',views.receipt_detail,name='receipt_detail'),#receipt details
     path('shopstock/<int:id>/', views.shopstockview, name='shopstockview'),
-     path('itemdelete/<int:id>/', views.itemdelete, name='itemdelete'),
+    path('itemdelete/<int:id>/', views.itemdelete, name='itemdelete'),
     path('itemedit/<int:id>/', views.Itemedit, name='itemedit'),
 
     #sitterregistration
     path('sittersform/', views.sittersform, name='sittersform'),
-    path('sitterslist/',views.sitterslist, name='sitterslist'),
+    path('sitterslist/', views.sitterslist, name='sitterslist'),
     path('sitterview/<int:id>/',views.sitterview,name='sitterview'),
     path('sarrivalview/<int:id>/',views.sarrivalview,name='sarrivalview'),
     path('spayment/',views.spayment, name='spayment'),
     path('spaymentlist/',views.spaymentlist, name='spaymentlist'),
-    path('bpaymentlist/',views.bpaymentlist, name='bpaymentlist'),
     path('sittersedit/<int:id>/', views.sittersedit, name='sittersedit'),
     path('sarrivaledit/<int:id>/', views.sarrivaledit, name='sarrivaledit'),
     path('sarrival/',views.sarrival, name='sarrival'),
     path('sarrivallist/',views.Sarrivallist, name='sarrivallist'),
     path('sitter/<int:id>/delete/',views.sitterdelete, name='sitterdelete'),
+    path('sarrival/<int:id>/delete/',views.sarrivaldelete, name='sarrivaldelete'),
     path('sitters/', views.sitter_list_view, name='sitters'),
     
 

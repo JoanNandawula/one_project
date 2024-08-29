@@ -21,6 +21,7 @@
     <thead class="thead-dark">
         <tr>
             <th scope="col">#</th>
+            <th scope="col">Baby Name</th>
             <th scope="col">Item Name</th>
             <th scope="col">Item Quantity</th>
             <th scope="col">Item Unit Price</th>
@@ -33,6 +34,7 @@
         {% for item in shopstock %}
         <tr>
             <th scope="row">{{ item.id }}</th>
+            <td>{{ item.baby_names }}</td>
             <td>{{ item.item_name }}</td>
             <td>{{ item.quantity }}</td>
             <td>{{ item.unit_price }}</td>

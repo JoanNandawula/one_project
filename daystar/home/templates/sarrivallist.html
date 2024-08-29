@@ -33,9 +33,18 @@
         <td>{{ sitter.sittersno }}</td>
         <td>{{ sitter.date }}</td>
         <td><a href="{% url 'sarrivalview' id=sitter.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239)" >View</a>
+          <form action="{% url 'sarrivaldelete' id=sitter.id %}" method="post" style="display:inline;" onsubmit="return confirmDelete();">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
       </tr>
       {% endfor %}
     </tbody>
   </table>
 </div>
+<script>
+  function confirmDelete() {
+      return confirm('Are you sure you want to delete?');
+  }
+</script>
 {% endblock %}
