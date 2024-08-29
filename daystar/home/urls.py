@@ -40,7 +40,7 @@ urlpatterns = [
 
     #sitterregistration
     path('sittersform/', views.sittersform, name='sittersform'),
-    path('sitterslist/', views.sitterslist, name='sitterslist'),
+    path('Sitterslist/', views.sitterslist, name='sitterslist'),
     path('sitterview/<int:id>/',views.sitterview,name='sitterview'),
     path('sarrivalview/<int:id>/',views.sarrivalview,name='sarrivalview'),
     path('spayment/',views.spayment, name='spayment'),
