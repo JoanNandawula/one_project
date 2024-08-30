@@ -149,7 +149,7 @@ def bdepartureedit(request,id):
     return render(request,'bdepartureedit.html',{'form':form,'baby':baby})
     
 def  bdepartureview(request,id):
-    baby_info=Babesform.objects.get( Babesform,id=id)   
+    baby_info=B_departure.objects.get(id=id)   
     return render(request,'bdepartureview.html',{'baby_info':baby_info})
 
 
