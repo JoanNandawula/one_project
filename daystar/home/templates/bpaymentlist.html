@@ -1,50 +1,95 @@
 {% extends 'base.html' %}
 
-
 {% block content %}
 <style>
-  h2{
-    text-align: center;
-  }
-  body{
+  body {
     background-color: lightblue;
+    margin: 0;
+    padding: 0;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  .container {
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 100%;
+    overflow-x: auto; /* Ensure horizontal scroll if table overflows */
+  }
+
+  .btn {
+    background-color: rgb(85, 201, 239);
+    color: white;
+  }
+
+  .table {
+    width: 100%;
+    margin: 20px auto;
+    table-layout: fixed; /* Ensure the table doesn't exceed container width */
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+    .btn {
+      display: block;
+      margin: 10px auto;
+    }
+
+    .table {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    th, td {
+      padding: 6px;
+    }
   }
 </style>
 
-<h2>List Paid babies</h2>
-<a href="/bpayment" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239)">Paid baby</a>
+<h2>List Paid Babies</h2>
+<a href="/bpayment" class="btn btn-outline-secondary">Paid Baby</a>
 <div class="container">
-<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">BabyPayee</th>
         <th scope="col">Payno</th>
         <th scope="col">Currency</th>
-        <th scope="col">Amount_Paid</th>
-        <th scope="col">Total balance</th>
-      
+        <th scope="col">Amount Paid</th>
+        <th scope="col">Total Balance</th>
       </tr>
     </thead>
-   
     <tbody>
-        {% for baby in bpaymentlist %}
+      {% for baby in bpaymentlist %}
       <tr>
-        <th scope="row">{{ baby.id}}</th>
+        <th scope="row">{{ baby.id }}</th>
         <td>{{ baby.payee }}</td>
         <td>{{ baby.Payno }}</td>
         <td>{{ baby.currency }}</td>
         <td>{{ baby.amount_paid }}</td>
-        <td>  {{baby.get_balance}} </td>
-
-      </tr> 
-
+        <td>{{ baby.get_balance }}</td>
+      </tr>
       {% endfor %}
-      
     </tbody>
   </table>
 </div>
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 
-
-{% endblock %}
+{% endblock %}

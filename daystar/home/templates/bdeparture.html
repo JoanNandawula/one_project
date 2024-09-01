@@ -8,55 +8,94 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+        body {
+            background-color: rgb(214, 232, 236);
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            padding: 20px;
+            max-width: 100%;
+            overflow-x: auto; /* Ensure horizontal scroll if content overflows */
+        }
+
+        h3 {
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 30px;
+            color: black; /* Adjust color if needed */
+        }
+
+        .bdeparture {
+            border: solid black;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin: 50px auto; /* Center the form */
+            border-radius: 5px;
+            padding: 25px 20px;
+            max-width: 500px; /* Adjust for responsiveness */
+            background-color: lightblue;
+            box-sizing: border-box; /* Ensure padding is included in the width calculation */
+        }
+
+        .bdeparture .form-group {
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column; /* Ensure label and input are stacked vertically */
+        }
+
+        .bdeparture .form-group label {
+            margin-bottom: 5px;
+        }
+
+        .bdeparture .form-group input,
+        .bdeparture .form-group select,
+        .bdeparture .form-group textarea {
+            width: 90%; /* Ensure inputs are full width within the grid */
+            box-sizing: border-box; /* Include padding in the width calculation */
+        }
+
+        .btn {
+            background-color: rgb(85, 201, 239);
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%; /* Full-width button on smaller screens */
+        }
+
+        @media (max-width: 768px) {
+            h3 {
+                font-size: 1.5rem; /* Adjust font size for smaller screens */
+            }
+
+            .bdeparture {
+                width: 90%;
+                margin: 20px auto;
+                padding: 20px;
+            }
+
+            .btn {
+                width: 100%;
+                padding: 12px;
+            }
+        }
+    </style>
 </head>
-<body style='background-color:rgb(214, 232, 236)'>
-    
-
-<style>
-   .bdeparture {
-    border:solid  black;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:10px;
-    margin-top:50px; 
-    border-radius:5px;
-    padding-left:20px;
-    padding-bottom:15px;
-    padding-top:25px;
-    padding-right:20px;
-    width:500px;
-    margin-left:200px;
-    background-color:lightblue;
-
-    
-}
-    h3 {
-        
-        margin-top: 50px;
-        margin-left:200px;
-        margin-bottom:50px;
-    }
-    .button{
-        height:20px;
-        margin-top:10px;
-        width:200px
-    }
-
-</style>
-
-<div class = 'container'>
-    <h3> 
-       BABY DEPARTURE FORM 
-    </h3>
-    <form action="" method="POST" class='bdeparture'>
-        
-        {% csrf_token %}
-        {{ form | crispy }}
-        <button type="submit" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">Submit</button>
-    </form>
-</div>
-<br><br>
-
+<body>
+    <div class="container">
+        <h3>BABY DEPARTURE FORM</h3>
+        <form action="" method="POST" class="bdeparture">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    <br><br><br><br><br>
 {% endblock %}
 </body>
 </html>

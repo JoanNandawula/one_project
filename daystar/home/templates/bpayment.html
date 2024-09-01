@@ -10,58 +10,65 @@
     <title>Document</title>
 </head>
 
-    
-
 <style>
-    
-    .body {
-        background-color:lightblue;
+    body {
+        background-color: rgb(214, 232, 236);
+        margin: 0;
+        padding: 0;
     }
-   .bpayment {
-    border:solid  black;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:10px;
-    margin-top:50px; 
-    border-radius:5px;
-    padding-left:20px;
-    padding-bottom:15px;
-    padding-right:20px;
-    width:500px;
-    margin-left:200px;
-    background-color:lightblue;
 
-    
-}
-    h3 {
-        
+    .bpayment {
+        border: solid black;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
         margin-top: 50px;
-        margin-left:200px;
-        margin-bottom:50px;
+        border-radius: 5px;
+        padding: 20px;
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        background-color: lightblue;
     }
-    button{
-        height:40px;
-        margin-top:10px;
-        width:200px
-    }
-    
 
+    h3 {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 50px;
+    }
+
+    button {
+        height: 40px;
+        margin-top: 10px;
+        width: 100%;
+        background-color: rgb(85, 201, 239);
+        border: none;
+        color: white;
+        border-radius: 5px;
+    }
+
+    @media (max-width: 768px) {
+        .bpayment {
+            grid-template-columns: 1fr; /* Stack the form fields in a single column */
+            width: 90%;
+            padding: 15px;
+        }
+
+        h3 {
+            margin-left: 0; /* Center the heading on smaller screens */
+        }
+    }
 </style>
-<body style='background-color:rgb(214, 232, 236)'>
+<body>
 <div class="container">
-    <h3>BABY'S PAYMMENT FORM</h3>
+    <h3>BABY'S PAYMENT FORM</h3>
     <form action="" method="POST" class="bpayment">
-        
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;  background-color: rgb(85, 201, 239);">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary">Submit</button>
     </form>
-
 </div>
-<br><br><br><br><br><br><br><br><br><br>
-
-
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
-
 </body>
 </html>

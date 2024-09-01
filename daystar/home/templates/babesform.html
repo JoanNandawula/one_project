@@ -1,71 +1,60 @@
-    {% extends 'base.html' %}
-    {% load crispy_forms_tags %}
-    {% load static %}
-    {% block content %}   <!DOCTYPE html>
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% block content %}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-
-   
-</head>  
-             
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        
-        .body {
-            background-color:lightblue;
+        body {
+            background-color: rgb(214, 232, 236);
         }
-    .babesform {
-        border:solid  black;
-        display:grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap:10px;
-        margin-top:50px; 
-        border-radius:5px;
-        padding-left:20px;
-        padding-bottom:15px;
-        padding-right:20px;
-        width:500px;
-        margin-left:200px;
-        background-color:lightblue;
-        margin-bottom: 40px;
-        padding-bottom:40px ;
- 
-    }
+        .babesform {
+            border: solid black;
+            display: grid;
+            grid-template-columns: 1fr; /* Single column for smaller screens */
+            gap: 10px;
+            margin-top: 50px; 
+            border-radius: 5px;
+            padding: 20px;
+            max-width: 500px; /* Set a maximum width */
+            margin: 50px auto; /* Center the form */
+            background-color: lightblue;
+        }
         h3 {
-            
-            margin-top: 50px;
-            margin-left:200px;
-            margin-bottom:50px;
+            text-align: center; /* Center align the heading */
+            margin-bottom: 20px;
         }
-        .button{
-            height:20px;
-            margin-top:10px;
-            width:200px
+        .button {
+            text-align: center; /* Center the button */
+            margin-top: 20px;
         }
-        
 
+        /* Media query for larger screens */
+        @media (min-width: 768px) {
+            .babesform {
+                grid-template-columns: repeat(2, 1fr); /* Two columns on larger screens */
+            }
+        }
     </style>
-<body style='background-color:rgb(214, 232, 236)'>
-    
-
+</head>
+<body>
     <div class="container">
         <h3>BABY'S REGISTRATION FORM</h3>
-        <form action="" method="POST" class='babesform'>
+        <form action="" method="POST" class="babesform">
             {% csrf_token %}
             {{ form | crispy }}
-            <div class='button'>
-                <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;  background-color: rgb(85, 201, 239);">Submit</button>
+            <div class="button">
+                <button type="submit" class="btn btn-outline-secondary" style="padding-left: 70px; padding-right: 70px; background-color: rgb(85, 201, 239);">Submit</button>
             </div>   
         </form>
     </div>
     <br><br>
-    {% endblock %}
-   
-
-
-
-
+{% endblock %}
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

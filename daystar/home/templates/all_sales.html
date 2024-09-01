@@ -1,49 +1,79 @@
-{% extends 'base.html'%} 
+{% extends 'base.html' %}
 {% block content %}
-<h4 >TOTAL QUANTITY PROCURED  MADE</h4><hr>
 
-
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">Total Quantity  Received</th>
-        <th scope="col">Total Quantity issued</th>
-        <th scope="col">Net Quantity</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{total_received_quantity}}</td>
-        <td>{{total_issued_quantity}}</td>
-        <td>{{net_quantity}}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-<br><br>
+<style>
+  h4 {
+    text-align: center;
+    color: #0C356A;
+    font-family: sans-serif;
+  }
+  .table-container {
+    margin: 20px auto;
+    max-width: 90%;
+  }
+  .table {
+    background-color: white;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+  .thead-dark th {
+    background-color: #343a40;
+    color: white;
+  }
+  @media (max-width: 768px) {
+    .table {
+      font-size: 14px;
+    }
+  }
+</style>
 
 <div class="container">
-  <table class="table">
-    <thead class="thead-dark">
-      <tr>
-        <th scope="col">item name</th>
-        <th scope="col">Quantity_issued</th>
-        <th scope="col">Issued date</th>
-        
-       
-      </tr>
-    </thead>
-    {% for issue  in all_issue_item %}
-    <tbody>
-      <tr> 
-        <td>{{issue.item | title}}</td>
-        <td>{{issue.quantity_issued}}</td>
-        <td>{{issue.issued_date}}</td>  
-      </tr>
-    </tbody>
-    {% endfor %}
-  </table>
+  <h4>TOTAL QUANTITY PROCURED AND ISSUED</h4>
+  <hr>
+
+  <div class="table-container">
+    <table class="table table-bordered table-striped table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Total Quantity Received</th>
+          <th scope="col">Total Quantity Issued</th>
+          <th scope="col">Net Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ total_received_quantity }}</td>
+          <td>{{ total_issued_quantity }}</td>
+          <td>{{ net_quantity }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <br>
+
+  <h4>ISSUED ITEMS DETAILS</h4>
+  <hr>
+
+  <div class="table-container">
+    <table class="table table-bordered table-striped table-responsive">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Item Name</th>
+          <th scope="col">Quantity Issued</th>
+          <th scope="col">Issued Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for issue in all_issue_item %}
+          <tr>
+            <td>{{ issue.item | title }}</td>
+            <td>{{ issue.quantity_issued }}</td>
+            <td>{{ issue.issued_date }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
 </div>
+
 {% endblock %}
-
-

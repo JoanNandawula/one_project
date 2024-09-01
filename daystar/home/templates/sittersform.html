@@ -1,70 +1,41 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% load static %}
 {% block content %}
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+<style>
+    .sittersform {
+        border: solid black;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        margin-top: 50px; 
+        border-radius: 5px;
+        padding: 25px 20px 15px 20px;
+        width: 100%;
+        max-width: 500px;
+        background-color: lightblue;
+    }
+    h3 {
+        margin-top: 50px;
+        text-align: center;
+    }
+    .button {
+        height: 40px;
+        margin-top: 10px;
+        grid-column: span 2;  /* Span both columns of the grid */
+        width: 50%;           /* Take full width of the form */
+        background-color: rgb(85, 201, 239);
+    }
+</style>
 
-    <style>
-    
-        .sittersform {
-         border:solid  black;
-         display:grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap:10px;
-         margin-top:50px; 
-         border-radius:5px;
-         padding-left:20px;
-         padding-bottom:15px;
-         padding-right:20px;
-         width:500px;
-         margin-left:200px;
-         background-color:lightblue;
-     
-         
-     }
-         /* h3 {
-             
-             margin-top: 50px;
-             margin-left:200px;
-             margin-bottom:50px;
-         } */
-         .button{
-             height:20px;
-             margin-top:10px;
-             width:200px;
-             background-color:rgb(85, 201, 239);
-
-         }
-         
-     
-     </style>
-     
-
-</head>
-<body style='background-color:rgb(214, 232, 236)'>
-    
-
-
-
-<h3 style='margin-top: 50px; margin-left:300px;' >SITTER'S REGISTRATION FORM</h3>
-<div class="container" >
-    
-    <form action="" method="POST" class='sittersform'>
+<h3>SITTER'S REGISTRATION FORM</h3>
+<div class="container d-flex justify-content-center">
+    <form action="" method="POST" class="sittersform">
         {% csrf_token %}
         {{ form | crispy }}
-        <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;  background-color: rgb(85, 201, 239);">Submit</button>
+        <button type="submit" class="btn btn-outline-secondary button">Submit</button>
     </form>
-  
 </div>
+<br><br><br><br><br><br><br><br><br><br><br>
 
-<br><br>
 {% endblock %}
-
-</body>
-</html>

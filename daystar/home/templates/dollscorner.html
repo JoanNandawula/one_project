@@ -2,51 +2,69 @@
 {% load static %}
 {% block content %}
 
-<br>
 <style>
-    body{
+    body {
         background-color: lightblue;
     }
+    .btn-custom {
+        background-color: rgb(85, 201, 239);
+        color: white;
+        border: none;
+    }
+    .btn-custom:hover {
+        background-color: rgb(70, 180, 220);
+    }
+    h4 {
+        text-align: center;
+        color: #0C356A;
+        font-family: sans-serif;
+    }
+    .table-container {
+        margin: 20px auto;
+        max-width: 90%;
+    }
+    .table {
+        background-color: white;
+        border-radius: 5px;
+        overflow: hidden;
+    }
+    @media (max-width: 768px) {
+        .btn-custom {
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
 </style>
-<div>
-    <a href="{% url 'issue_item'  dolls.id %}" class="hover_button" ><input type="submit" value="sell doll" class="btn btn-outline-secondary" placeholder="sell doll" style=" background-color: rgb(85, 201, 239);"/></a>
-    <a href="{% url 'add_to_stock' dolls.id %}"  class="hover-button"><input type= "submit" value="Add to Stock" class="btn btn-outline-secondary" type="button" style=" background-color: rgb(85, 201, 239);"/></a>
+
+<div class="container">
+    <div class="text-center mb-4">
+        <a href="{% url 'issue_item' dolls.id %}" class="btn btn-custom btn-lg">Sell Doll</a>
+        <a href="{% url 'add_to_stock' dolls.id %}" class="btn btn-custom btn-lg">Add to Stock</a>
+    </div>
+
+    <h4>DOLLS DETAILS</h4>
+    <hr>
+
+    <div class="table-container">
+        <table class="table table-bordered table-striped table-responsive">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Doll's Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Price (UGX)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ dolls.category_doll }}</td>
+                    <td>{{ dolls.name_of_the_doll }}</td>
+                    <td>{{ dolls.quantity }}</td>
+                    <td>UGX {{ dolls.Unit_price }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
 
-<br><br>
-
-
-
-
-    <h4> DOLLS  DETAILS </h4><hr>
-
-    <table class="table ">
-        <thead class="thead-dark table-">
-            <tr>
-                <th scope="col" class="project-h1">Category</th>
-                <th scope="col" class="project-h1">Dolls name</th>
-                <th scope="col" class="project-h1">Quantity</th>
-                <th scope="col" class="project-h1">Unit Price(UGX)</th>
-            
-            </tr>
-        </thead>
-        
-        <tbody>
-            <tr>
-                <td>{{dolls.category_doll}}</td>
-                <td>{{dolls.name_of_the_doll}}</td>
-                <td>{{dolls.quantity}}</td>
-                <td>UGX{{dolls.Unit_price}}</td>
-            </div>
-
-
-        </tr>
-    </tbody>
-
-</table>
-</div>
-</div>
-</div>
-<br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
-

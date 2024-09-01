@@ -4,41 +4,96 @@
   h2 {
     text-align: center;
     color: black; 
+    margin-top: 20px;
   }
-  body{
+
+  body {
     background-color: lightblue;
+    margin: 0;
+    padding: 0;
+  }
+
+  .container {
+    padding: 20px;
+    max-width: 100%;
+    overflow-x: auto; /* Ensure horizontal scroll if content overflows */
+  }
+
+  .btn {
+    background-color: rgb(85, 201, 239);
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .table {
+    width: 100%; /* Ensure table width adjusts to screen size */
+    margin-left: 0; /* Remove left margin */
+  }
+
+  .table th, .table td {
+    text-align: center;
+    padding: 8px;
+  }
+
+  @media (max-width: 768px) {
+    h2 {
+      font-size: 1.5rem; /* Adjust font size for smaller screens */
+    }
+
+    .container {
+      padding: 10px;
+    }
+
+    .btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-bottom: 10px; /* Add spacing below the button */
+    }
+
+    .table {
+      font-size: 0.9rem; /* Adjust font size for smaller screens */
+    }
+
+    .table th, .table td {
+      padding: 12px;
+    }
   }
 </style>
+
 <h2>List of taken Babies</h2>
-<a href="/bdeparture" class="btn btn-outline-secondary" style="margin-left: 100px;  background-color: rgb(85, 201, 239);">Add Baby</a>
+<a href="/bdeparture" class="btn">Add Baby</a>
 <div class="container">
-<table class="table table-striped" style="width: 90%; margin-left: 20px;" >
+  <table class="table table-striped">
     <thead>
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">person_taking_baby</th>
-        <th scope="col">Telephone_no</th>
+        <th scope="col">Person Taking Baby</th>
+        <th scope="col">Telephone No</th>
         <th scope="col">Timeout</th>
-        <th scope="col">Babyno</th>
+        <th scope="col">Baby No</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
-        {% for baby in bdeparturelist %}
+      {% for baby in bdeparturelist %}
       <tr>
         <th scope="row">{{ baby.id }}</th>
         <td>{{ baby.baby_names }}</td>
-        <td>{{ baby.person_taking_baby}}</td>
+        <td>{{ baby.person_taking_baby }}</td>
         <td>{{ baby.telephone_no }}</td>
         <td>{{ baby.timeout }}</td>
         <td>{{ baby.babyno }}</td>
-        <td><a href="{% url 'bdepartureview' id=baby.id %}" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239);">View</a></td>
+        <td><a href="{% url 'bdepartureview' id=baby.id %}" class="btn">View</a></td>
       </tr>
       {% endfor %}
     </tbody>
-    
   </table>
 </div>
-<br><br><br><br><br><br><br><br><br><br>
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}

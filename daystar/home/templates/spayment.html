@@ -10,55 +10,46 @@
     <title>Document</title>
 
     <style>
-    
         .spayment {
-         border:solid  black;
-         display:grid;
-         grid-template-columns: repeat(2, 1fr);
-         gap:10px;
-         margin-top:50px; 
-         border-radius:5px;
-         padding-left:20px;
-         padding-bottom:15px;
-         padding-right:20px;
-         width:500px;
-         margin-left:200px;
-         background-color:lightblue;
-     
-         
-     }
-         /* h3 {
-             
-             margin-top: 50px;
-             margin-left:200px;
-             margin-bottom:50px;
-         } */
-         .button{
-             height:20px;
-             margin-top:10px;
-             width:200px
-         }
-         
-     
-     </style>
-     
+            border: solid black;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 50px;
+            border-radius: 5px;
+            padding: 15px 20px;
+            background-color: lightblue;
+        }
+        .button {
+            height: 20px;
+            margin-top: 10px;
+            width: 200px;
+        }
+
+        /* Media query for smaller screens */
+        @media (max-width: 768px) {
+            .spayment {
+                grid-template-columns: 1fr; /* Stack columns on smaller screens */
+                width: auto; /* Auto width */
+                margin: 20px; /* Reduced margin */
+            }
+            h1 {
+                text-align: center; /* Center heading */
+                margin-left: 0; /* Reset left margin */
+            }
+        }
+    </style>
 </head>
-<body style='background-color:rgb(214, 232, 236)'>
-    
-
-<div class="container">
-    <h1 style='margin-top: 50px; margin-left:300px;'>SITTERS PAYMENT</h1>
-    <form action="" method="POST" class="spayment">
-        
-        {% csrf_token %}
-        {{ form |crispy }}
-  
-        <button type="submit" class="btn btn-outline-secondary" style="margin-left:px; padding-left:70px; padding-right:70px;  background-color: rgb(85, 201, 239);">Submit</button>
-</div>
-</form>
-</div>
-<br><br><br><br><br><br><br><br>
+<body style="background-color: rgb(214, 232, 236);">
+    <div class="container">
+        <h1 class="text-center" style="margin-top: 50px;">SITTERS PAYMENT</h1>
+        <form action="" method="POST" class="spayment">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button type="submit" class="btn btn-outline-secondary" style="margin-left: auto; margin-right: auto; display: block; background-color: rgb(85, 201, 239);">Submit</button>
+        </form>
+    </div>
+    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
 {% endblock %}
-
 </body>
 </html>

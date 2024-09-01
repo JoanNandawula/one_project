@@ -8,14 +8,14 @@
     font-family: sans-serif;
     color: #0C356A;
     text-shadow: 2px 2px 4px #000000;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
   }
 
   .container {
-    width: 40%;
+    width: 100%;
+    max-width: 600px;
     margin: 0 auto;
+    padding: 20px;
   }
 
   form {
@@ -23,7 +23,6 @@
     padding: 20px;
     border-radius: 10px;
     background-color: white;
-
   }
 
   input[type="text"],
@@ -37,20 +36,36 @@
   }
 
   button[type="submit"] {
-    width: 30%;
+    width: 100%;
     padding: 10px;
-  
     color: #fff;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    background-color: rgb(85, 201, 239);
   }
 
-  button [type="submit"]:hover {
-    
+  button[type="submit"]:hover {
+    background-color: rgb(70, 180, 220);
   }
-  body{background-color: lightblue;}
-  label{font-family:sans-serif; }
+
+  body {
+    background-color: lightblue;
+  }
+
+  label {
+    font-family: sans-serif;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 15px;
+    }
+
+    button[type="submit"] {
+      padding: 15px;
+    }
+  }
 </style>
 
 <h4>ADD TO STOCK</h4>
@@ -59,8 +74,8 @@
   <form method="POST" action="">
     {% csrf_token %}
     {{ form|crispy }}
-    <button type="submit" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">Add</button>
+    <button type="submit" class="btn btn-outline-secondary">Add</button>
   </form>
 </div>
-<br><br><br><br><br><br><br><br><br><br>
+<br>
 {% endblock %}
