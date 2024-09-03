@@ -129,14 +129,21 @@ class Salesrecord(models.Model):
     amount_received = models.IntegerField(default=0, null=True, blank=True)
     sale_date = models.DateField(default=timezone.now, null=True, blank=True)
     unit_price = models.IntegerField(default=0)
-        
+
     def get_total(self):
-        total = self.quantity_sold * self.unit_price
+        # Ensure that `quantity_sold` and `unit_price` are not None
+        quantity = self.quantity_sold if self.quantity_sold is not None else 0
+        unit_price = self.unit_price if self.unit_price is not None else 0
+        total = quantity * unit_price
         return int(total)
 
     def get_change(self):
-        change = self.get_total() - self.amount_received
+        # Ensure that `amount_received` is not None
+        total = self.get_total()
+        amount_received = self.amount_received if self.amount_received is not None else 0
+        change = total - amount_received
         return int(change)
+
       
 
 
