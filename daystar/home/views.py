@@ -287,24 +287,31 @@ def receipt(request):
     sales= Salesrecord.objects.all().order_by('-id') 
     return render(request,'receipt.html',{'sales':sales})  
 @login_required
-def issue_item(request,pk):
-    issued_item=Doll.objects.get(id=pk) 
-    sales_form=SalesrecordForm(request.POST)  
+def issue_item(request, pk):
+    issued_item = Doll.objects.get(id=pk)
+    sales_form = SalesrecordForm(request.POST)
 
     if request.method == 'POST':
         if sales_form.is_valid():
-            new_sale=sales_form.save(commit=False)
-            new_sale.doll=issued_item
-            new_sale.unit_price=issued_item.Unit_price
+            new_sale = sales_form.save(commit=False)
+            new_sale.doll = issued_item
+            new_sale.unit_price = issued_item.Unit_price
             new_sale.save()
-            issued_quantity=int(request.POST['quantity_sold'])
-            issued_item.quantity-=issued_quantity
-            issued_item.save()
-            print(issued_item.name_of_the_doll)
-            print(request.POST['quantity_sold'])
-            print(issued_item.quantity)
-            return redirect('receipt')
-    return render(request, 'issue_item.html',{'sales_form':sales_form} )
+
+            quantity_sold = request.POST.get('quantity_sold')
+            if quantity_sold and quantity_sold.isdigit():  # Check if quantity_sold is valid
+                issued_quantity = int(quantity_sold)
+                issued_item.quantity -= issued_quantity
+                issued_item.save()
+                print(issued_item.name_of_the_doll)
+                print(quantity_sold)
+                print(issued_item.quantity)
+                return redirect('receipt')
+            else:
+                # Handle the case where quantity_sold is not provided or is invalid
+                print("Invalid quantity_sold value")
+                # Optionally, you can return an error message or redirect back to the form
+    return render(request, 'issue_item.html', {'sales_form': sales_form})
 
 @login_required
 def receipt_detail(request, receipt_id):

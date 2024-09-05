@@ -5,7 +5,7 @@
 <style>
     h4 {
         text-shadow: 2px 2px 4px #000000;
-        margin-left: 543px;
+        text-align: center; /* Centered the title */
         font-family: sans-serif;
         margin-top: 90px;
     }
@@ -14,15 +14,10 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 10px;
-        max-width: 50%;
+        max-width: 50%; /* Set max-width to full for mobile responsiveness */
         margin: auto;
-        border-radius: 5px;
         border-radius: 10px;
-        padding-left: 20px;
-        padding-bottom: 15px;
-        padding-top: 15px;
-        padding-right: 15px;
-        margin-bottom: 10px;
+        padding: 20px;
         background-color: white;
         margin-top: 52px;
         border: 5px solid rgba(0, 128, 255, 0.2);
@@ -30,7 +25,6 @@
         transition: border-color 0.3s, box-shadow 0.3s;
         margin-bottom: 50px;
     }
-
 
     label {
         font-weight: bold;
@@ -45,10 +39,9 @@
         border: 2px solid rgba(0, 128, 255, 0.2);
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
-        padding: 10px; /* Added padding */
-        border-radius: 5px; /* Added border radius */
-        width: 100%; /* Make input fields fill the available space */
-        max-width: 100%; /* Ensure input fields don't overflow their container */
+        padding: 10px;
+        border-radius: 5px;
+        width: 50%; 
     }
 
     .container select[name="item"] {
@@ -56,20 +49,6 @@
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s; 
     }
-    
-
-    /* button[type="submit"] {
-        margin-top: 33px;
-        color: white;
-        border: 20px;
-       max-width: 200%;
-        border-radius: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        height: 40px;
-        padding: 10px;
-        transition: background-color 0.8s, color 0.7s;
-    } */
 
     .container {
         margin-top: 16px;
@@ -84,18 +63,34 @@
         box-shadow: 0 0 0.1rem rgba(0, 0, 0, 0.1);
         transition: border-color 0.3s, box-shadow 0.3s;
     }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+        .sales-form {
+            grid-template-columns: 1fr; /* Stack form fields in one column on smaller screens */
+            max-width: 50%; /* Full-width form on small screens */
+        }
+
+        h4 {
+            font-size: 24px; /* Reduce the size of the heading for small screens */
+        }
+
+        button[type="submit"] {
+            width: 50%; /* Make button full width on smaller screens */
+        }
+    }
 </style>
 
-<h4> ISSUE FORM</h4>
+<h4>ISSUE FORM</h4>
 <hr>
 <div class="back-container">
     <div class="container">
         <form method="POST" class="sales-form">
             {% csrf_token %}
             {{ sales_form | crispy }}
-            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 35px;margin-bottom: 35px;  background-color: rgb(85, 201, 239);">ISSUE</button>
+            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 35px;margin-bottom: 35px; background-color: rgb(85, 201, 239);">ISSUE</button>
         </form>
     </div>
 </div>
-<br>
-{% endblock %}
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

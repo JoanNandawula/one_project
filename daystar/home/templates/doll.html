@@ -7,58 +7,58 @@
     }
 </style>
 
-
-<br>
-    <a  href="{% url 'receipt' %}" class="hover_button" ><input type="submit" value="Receipts" class=" btn btn-outline-secondary" placeholder="Receipts" style=" background-color: rgb(85, 201, 239);"/></a>
-    <!-- <a href="{% url 'all_sales' %}"  class="hover-button"><input type= "submit" value="All_sales" class="btn btn-outline-secondary" type="button"/></a> -->
-
-
-<div class="table-container">
-    
-        <h4 >DOLLS IN  STOCK</h4><hr>
-
-    
-</div>
-<table class="table table-bordered">
-    
-    <thead class="thead-dark table-bordered">
-        <tr>
-            <th scope="col" class="project-h1">Category</th>
-            <th scope="col" class="project-h1">Doll name</th>
-            <th scope="col" class="project-h1">Doll Quantity</th>
-            <th scope="col" class="project-h1">Doll Issued_quantity</th>
-            <th scope="col" class="project-h1">Doll received_quantity</th>
-            <th scope="col" class="project-h1">Doll Unit_price (UGX)</th>
-            <th scope="col" class="project-h1">Doll date</th>
-            <th scope="col" class="project-h1">Doll Sale</th>
-        </tr>
-    </thead>
-    {% for doll in dolls %}
-    <tbody>
-        <tr style="font-family: sans-serif;">
-            <td>{{doll.category_doll}}</td>
-            <td>{{doll.name_of_the_doll}}</td>
-            <td>{{doll.quantity}}</td>
-            <td>{{doll.issued_quantity}}</td>
-            <td>{{doll.received_quantity}}</td>
-            <td>UGX{{doll.unit_price}}</td>
-            <td>{{doll.date}}</td>
-            
-    
-           <div> <!-- here we are hadling the buy item link n its handled by product_detail view -->
-            
-            <td >
-                <a href="{% url 'dollscorner' dolls_id=doll.id %}" class="btn btn-outline-secondary" style=" background-color: rgb(85, 201, 239);">Sell Doll</a>
-            </td>
-
-
+<div class="container mt-3"> <!-- Bootstrap container for responsive layout -->
+    <div class="row">
+        <div class="col text-center">
+            <a href="{% url 'receipt' %}" class="hover_button">
+                <input type="submit" value="Receipts" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239);"/>
+            </a>
         </div>
-    </tr>
-</tbody>
-{% endfor %}
-</table>
+        <!-- Optional: Add other button here for 'All_sales' if needed -->
+    </div>
+
+    <div class="row mt-4">
+        <div class="col text-center">
+            <h4>DOLLS IN STOCK</h4>
+            <hr>
+        </div>
+    </div>
+
+    <div class="table-responsive"> <!-- Make table scrollable on small screens -->
+        <table class="table table-bordered">
+            <thead class="thead-dark table-bordered">
+                <tr>
+                    <th scope="col">Category</th>
+                    <th scope="col">Doll Name</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Issued Quantity</th>
+                    <th scope="col">Received Quantity</th>
+                    <th scope="col">Unit Price (UGX)</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Sale</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for doll in dolls %}
+                <tr style="font-family: sans-serif;">
+                    <td>{{ doll.category_doll }}</td>
+                    <td>{{ doll.name_of_the_doll }}</td>
+                    <td>{{ doll.quantity }}</td>
+                    <td>{{ doll.issued_quantity }}</td>
+                    <td>{{ doll.received_quantity }}</td>
+                    <td>UGX {{ doll.unit_price }}</td>
+                    <td>{{ doll.date }}</td>
+                    <td>
+                        <a href="{% url 'dollscorner' dolls_id=doll.id %}" class="btn btn-outline-secondary" style="background-color: rgb(85, 201, 239);">
+                            Sell Doll
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
-</div>
-</div>
-<br><br><br><br><br><br><br><br><br><br>
-{% endblock %}
+
+<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+{% endblock %}

@@ -3,53 +3,76 @@
 {% load static %}
 {% block content %}
 <style>
-        
     .body {
-        background-color:lightblue;
+        background-color: lightblue;
     }
-.sales-form {
-    border:solid  black;
-    display:grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap:10px;
-    margin-top:50px; 
-    border-radius:5px;
-    padding-left:20px;
-    padding-bottom:15px;
-    padding-right:20px;
-    width:500px;
-    margin-left:200px;
-    background-color:lightblue;
-    margin-bottom: 40px;
-    padding-bottom:40px ;
-
-    
-}
-    h3 {
-        
+    .sales-form {
+        border: solid black;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
         margin-top: 50px;
-        margin-left:450px;
-        margin-bottom:50px;
+        border-radius: 5px;
+        padding-left: 20px;
+        padding-bottom: 15px;
+        padding-right: 20px;
+        width: 500px;
+        margin-left: 200px;
+        background-color: lightblue;
+        margin-bottom: 40px;
+        padding-bottom: 40px;
     }
-    .button{
-        height:20px;
-        margin-top:10px;
-        width:200px
+    h3 {
+        margin-top: 50px;
+        margin-left: 450px;
+        margin-bottom: 50px;
     }
-    
+    .button {
+        height: 40px;
+        margin-top: 10px;
+        width: 200px;
+    }
 
+    /* Media query for screens smaller than 768px (tablets and mobile devices) */
+    @media (max-width: 768px) {
+        .sales-form {
+            grid-template-columns: 1fr; /* Switch to a single column */
+            width: 100%;
+            margin-left: 0;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        h3 {
+            margin-left: 0;
+            text-align: center;
+        }
+        .button {
+            width: 100%; /* Button takes full width */
+        }
+    }
+
+    /* Media query for screens smaller than 480px (small mobile devices) */
+    @media (max-width: 480px) {
+        .sales-form {
+            padding-left: 5px;
+            padding-right: 5px;
+        }
+        h3 {
+            font-size: 1.5rem;
+        }
+    }
 </style>
 
-<h3> ISSUE ITEM</h3>
+<h3>ISSUE ITEM</h3>
 <hr>
 <div class="back-container">
     <div class="container">
         <form method="POST" class="sales-form">
             {% csrf_token %}
             {{ form | crispy }}
-            <button type="submit" class="btn btn-outline-secondary" style="margin-top: 35px;margin-bottom: 35px;  background-color: rgb(85, 201, 239)">ISSUE</button>
+            <button type="submit" class="btn btn-outline-secondary button" style="background-color: rgb(85, 201, 239)">ISSUE</button>
         </form>
     </div>
 </div>
 <br>
-{% endblock %}
+{% endblock %}
