@@ -5,8 +5,7 @@ from .import views
 from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from home import views
-from django.conf import settings
-from django.conf.urls.static import static
+
 
 
 urlpatterns = [
@@ -68,4 +67,4 @@ urlpatterns = [
     #babypayment
     # path('baby/<int:id>/delete/',views.babydelete, name='babydelete'),
     # path('baby/', views.baby_list_view, name='baby'),
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
