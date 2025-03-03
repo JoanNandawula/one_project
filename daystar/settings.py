@@ -126,6 +126,8 @@ STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Media files (user-uploaded images, like children photos)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
 
 
 # Default primary key field type
