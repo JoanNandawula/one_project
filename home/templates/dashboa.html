@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <!-- Sitter Count Card -->
+        <div class="col-md-4">
+            <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
+                <div class="card-header">Total Sitters</div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ sitter_count }}</h5>
+                    <p class="card-text">Number of sitters registered in the system.</p>
+                </div>
+            </div>
+        </div>
+        <!-- Add more dashboard cards here -->
+    </div>
+</div>
+</body>
+</html>
+{% endblock %}
