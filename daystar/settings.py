@@ -122,6 +122,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static",  # Make sure static is correctly set to your static folder
+]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 # Media files (user-uploaded images, like children photos)
 MEDIA_URL = '/media/'
