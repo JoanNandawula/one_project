@@ -130,9 +130,16 @@ class Salesrecord(models.Model):
     sale_date = models.DateField(default=timezone.now, null=True, blank=True)
     unit_price = models.IntegerField(default=0)
         
-    def get_total(self):
-        total = self.quantity_sold * self.unit_price
-        return int(total)
+    # def get_total(self):
+    #     total = self.quantity_sold * self.unit_price
+    #     return int(total)
+
+def get_total(self):
+    if self.quantity_sold is None or self.unit_price is None:
+        return 0  # Return 0 or handle it as needed
+    total = self.quantity_sold * self.unit_price
+    return int(total)
+
 
     def get_change(self):
         change = self.get_total() - self.amount_received
@@ -168,4 +175,15 @@ class shopStock(models.Model):
     def __str__(self):
         return self.name      
 
-    
+    from django.db import models
+
+class Sitter(models.Model):
+    # fields for the Sitter model
+    name = models.CharField(max_length=100)
+    # other fields...
+
+class Baby(models.Model):
+    # fields for the Baby model
+    name = models.CharField(max_length=100)
+    age = models.IntegerField()
+    # other fields...

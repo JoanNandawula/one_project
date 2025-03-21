@@ -6,144 +6,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
+    <!-- Add Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background-color: rgb(173, 229, 247);
+            display: flex;
+            background-color: rgb(173, 229, 247); /* Page background blue */
         }
 
-        .man {
-            text-align: right;
-            margin: 20px;
+        .sidebar {
+            width: 250px;
+            height: 100vh;
+            background-color: #333;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            padding-top: 20px;
+            position: fixed;
         }
 
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 10px;
-            border: 1px solid #0b0b0b;
-            border-radius: 5px;
-            background-color: rgb(205, 225, 232);
-            text-align: center;
-        }
-
-        .header {
+        .sidebar h2 {
             text-align: center;
             margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+
+        .sidebar a:hover {
+            background-color: rgb(173, 229, 247); /* Hover background matches the page's blue */
+            color: black; /* Change text color to black on hover for better contrast */
+        }
+
+        .sidebar i {
+            margin-right: 10px;
+        }
+
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            padding: 20px;
+            text-align: center;
         }
 
         .card-container {
             display: flex;
-            flex-wrap: wrap;
             justify-content: center;
-            margin-left: 20px;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
         .card {
             background-color: lightblue;
-            border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 10px;
             padding: 20px;
             width: 250px;
-            height: 150px;
+            height: 180px;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
-            margin-left: 20px;
-            margin-right: 20px;
-            margin-bottom: 20px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .card img {
-            border-radius: 5px;
             width: 50px;
             height: 50px;
             margin-bottom: 10px;
         }
 
-        .card h4 {
-            margin: 0;
-        }
-
-        footer {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-            bottom: 0;
-            width: 100%;
-            height: 10px;
-        }
-
-        footer a {
-            color: #fff;
-        }
-
-        button {
-            background-color: rgb(85, 201, 239);
-            padding-top: 10px;
-            padding-bottom: 20px;
-            margin: 8px;
-            border-radius: 4px;
-            height: 20px;
-            width: 70px;
+        .card a {
+            text-decoration: none;
+            color: black;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="man">
-        <a href="/"><button type="button" class="btn btn-outline-secondary">Logout</button></a>
+    <div class="sidebar">
+        <h2>Dashboard</h2>
+        <a href="/"><i class="fas fa-home"></i> Home</a>
+        <a href="{% url 'sittersform' %}"><i class="fas fa-user-tie"></i> Sitters</a>
+        <a href="{% url 'babesform' %}"><i class="fas fa-baby"></i> Babies</a>
+        <a href="{% url 'doll' %}"><i class="fas fa-box"></i> Procurement</a>
+        <a href="/logout"><i class="fas fa-sign-out-alt"></i> Logout</a>
     </div>
-    
-    <center>
+
+    <div class="main-content">
         <h1>DAYSTAR DAYCARE</h1>
-        <img src="{% static 'Images/CAPTAIN.png' %}" alt="Captain Image"
-            style="border-radius: 100px; height: 200px; width: 200px; background-color: rgb(164, 164, 164);" >
-    </center>
-    
-    <div class="container">
-        <div class="header">
-            <h2>Dashboard</h2>
-        </div>
-        <form action="{% url 'login' %}" method="POST">
-            {% csrf_token %}
-            <div class="card-container">
-                <!-- <div class="card">
-                    <img src="{% static 'sitters.png' %}" alt="sitters Image">
-                    <h4><a href="{% url 'sittersform' %}">Sitter's Registration Form</a></h4>
-                </div> -->
-                <div class="card text-white bg-info mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Total Sitters</div>
-                    <div class="card-body">
-                        <h5 class="card-title">{{ sitter_count }}</h5>
-                        <p class="card-text">Number of sitters registered in the system.</p>
-                        <img src="{% static 'sitters.png' %}" alt="sitters Image">
-                        <h4><a href="{% url 'sittersform' %}">Sitter's Registration Form</a></h4>
-                    </div>
-                </div>
-                <div class="card">
-                    <img src="{% static 'babes.png' %}" alt="Baby Image">
-                    <h4><a href="{% url 'babesform' %}">Baby's Registration Form</a></h4>
-                </div>
-                <div class="card">
-                    <img src="{% static 'procurement.png' %}" alt="ProcurementImage">
-                    <h4><a href="{% url 'doll' %}">Procurement</a></h4>
-                </div>
-              
-
-
-                <!-- Add more cards if needed -->
+        <img src="{% static 'images/CAPTAIN.png' %}" alt="Captain Image" style="border-radius: 50px; height: 150px; width: 150px;">
+        
+        <div class="card-container">
+            <div class="card">
+                <h4>Total Sitters</h4>
+                <h5 id="sitter-count">{{ sitter_count }}</h5>
+                <img src="{% static 'images/sitters.png' %}" alt="Sitters Image">
+                <a href="{% url 'sittersform' %}">View Details</a>
             </div>
-        </form>
+            <div class="card">
+                <h4>Total Babies</h4>
+                <h5 id="baby-count">{{ baby_count }}</h5>
+                <img src="{% static 'images/babes.png' %}" alt="Babies Image">
+                <a href="{% url 'babesform' %}">View Details</a>
+            </div>
+            <div class="card">
+                <h4>Procurement</h4>
+                <img src="{% static 'images/procurement.png' %}" alt="Procurement Image">
+                <a href="{% url 'doll' %}">View Details</a>
+            </div>
+        </div>
     </div>
-    <br>
-    <footer>
-        <p>&copy; 2024 NJoan. All rights reserved.</p>
-    </footer>
+
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+    console.log("Sitter Count: {{ sitter_count|default:0|escapejs }}");
+    console.log("Baby Count: {{ baby_count|default:0|escapejs }}");
+
+    // Countdown effect for sitters and babies count
+    function countdown(elementId, startValue) {
+        let currentValue = parseInt(startValue, 10); // Ensure it is treated as an integer
+        const element = document.getElementById(elementId);
+        const interval = setInterval(() => {
+            if (currentValue > 0) {
+                currentValue--;
+                element.innerText = currentValue;
+            } else {
+                clearInterval(interval); // Stop countdown when it reaches 0
+            }
+        }, 1000); // Update every second
+    }
+
+    // Initialize countdown for sitters and babies, make sure values are passed as integers
+    countdown('sitter-count', '{{ sitter_count|default:0|escapejs }}');
+    countdown('baby-count', '{{ baby_count|default:0|escapejs }}');
+});
+
+    </script>
+    
 </body>
 </html>
 {% endblock %}

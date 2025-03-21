@@ -10,6 +10,7 @@ from datetime import datetime
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect, get_object_or_404
+from .models import Sitter, Baby
 
 
 
@@ -427,6 +428,18 @@ def dashboard_view(request):
 def shopstockview(request, id):
     item_info = Shopform.objects.get(id=id)
     return render(request, 'shopstockview.html', {'item_info': item_info})
+
+# from django.shortcuts import render
+# from .models import Sitter, Baby
+
+def dashboard(request):
+    sitter_count = Sitter.objects.count()
+    baby_count = Baby.objects.count()
+    return render(request, 'dash.html', {
+        'sitter_count': sitter_count,
+        'baby_count': baby_count,
+    })
+
 
 
 
