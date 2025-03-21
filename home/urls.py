@@ -40,7 +40,7 @@ urlpatterns = [
     path('itemedit/<int:id>/', views.Itemedit, name='itemedit'),
 
     #sitterregistration
-    path('sittersform/', views.sittersform_view, name='sittersform'),
+    path('sittersform/', views.sittersform, name='sittersform'),
     path('Sitterslist/', views.sitterslist, name='sitterslist'),
     path('sitterview/<int:id>/',views.sitterview,name='sitterview'),
     path('sarrivalview/<int:id>/',views.sarrivalview,name='sarrivalview'),
