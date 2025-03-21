@@ -103,24 +103,24 @@
 
     <div class="main-content">
         <h1>DAYSTAR DAYCARE</h1>
-        <img src="{% static 'images/CAPTAIN.png' %}" alt="Captain Image" style="border-radius: 50px; height: 150px; width: 150px;">
+        <img src="{% static 'Images/CAPTAIN.png' %}" alt="Captain Image" style="border-radius: 50px; height: 150px; width: 150px;">
         
         <div class="card-container">
             <div class="card">
                 <h4>Total Sitters</h4>
                 <h5 id="sitter-count">{{ sitter_count }}</h5>
-                <img src="{% static 'images/sitters.png' %}" alt="Sitters Image">
+                <img src="{% static 'Images/sitters.png' %}" alt="Sitters Image">
                 <a href="{% url 'sittersform' %}">View Details</a>
             </div>
             <div class="card">
                 <h4>Total Babies</h4>
                 <h5 id="baby-count">{{ baby_count }}</h5>
-                <img src="{% static 'images/babes.png' %}" alt="Babies Image">
+                <img src="{% static 'Images/babes.png' %}" alt="Babies Image">
                 <a href="{% url 'babesform' %}">View Details</a>
             </div>
             <div class="card">
                 <h4>Procurement</h4>
-                <img src="{% static 'images/procurement.png' %}" alt="Procurement Image">
+                <img src="{% static 'Images/procurement.png' %}" alt="Procurement Image">
                 <a href="{% url 'doll' %}">View Details</a>
             </div>
         </div>
