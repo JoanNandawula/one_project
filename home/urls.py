@@ -6,7 +6,7 @@ from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from home import views
 
-
+# what do u call a cat without wings
 
 urlpatterns = [
     path('', views.index, name='index'),
